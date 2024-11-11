@@ -15,36 +15,11 @@ $pratop = $pratoPrincipal[$codigo];
         print $pratoPrincipal['nome'];
     ?>
     </title>
-</head>
-<header>
-    <!-- navegacao -->
-</header>
-<body>
-    <h1>Pratos Principais</h1>
-    <div class="botao1">
-        <a href="projetointegrador.php"><button>VOLTAR</button></a>
-    </div>
-    <div class="container">
-    <div class="img">
-    <img src="./imagem/<?php print $pratop['imagem']; ?>">
-    </div>
+    <style>
 
-    <div class="info">
-    <h1><?php print $pratop['nome'];?></h1>
-    <p><?php print $pratop['resumo'];?></p>
-    <b class="preco"><?php print $pratop['preco'];?></b>
-    </div>
-    
-    
-    </div>
-</body>
-</html>
-<style>
-    h1{
-        color: ;
-    }
     .info{
         margin-left: 30px;
+        
     }
     img{
         width:400px;
@@ -57,12 +32,13 @@ $pratop = $pratoPrincipal[$codigo];
         display: flex;
         justify-content: center;
         align-items: center;
+        
     }
     button{
         width: 890px;
-        height: 35px;
+        height: 40px;
         border-radius:10px;
-        margin-bottom: 10px;
+        margin-bottom: 30px;
         background-color:rgb(242, 236, 190);
         color:rgb(154, 59, 59);
         cursor: pointer;
@@ -75,3 +51,26 @@ $pratop = $pratoPrincipal[$codigo];
         align-items: center;
     }
 </style>
+</head>
+<header>
+    <!-- navegacao -->
+</header>
+<body>
+    <div class="botao1">
+        <a href="projetointegrador.php"><button>Voltar</button></a>
+    </div>
+    <div class="container">
+    <div class="img">
+    <img src="./imagem/<?php print $pratop['imagem']; ?>">
+    </div>
+
+    <div class="info">
+    <h1><?php print $pratop['nome'];?></h1>
+    <b class="preco"><?php print $pratop['preco'];?></b>
+    <p><?php print $pratop['resumo'];?></p>
+    </div>
+    
+    
+    </div>
+</body>
+</html>
