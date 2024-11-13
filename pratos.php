@@ -1,8 +1,15 @@
 <?php
 require_once 'cardapio.php';
 $codigo = $_GET['codigoprato'];
+$categoria = $_GET['categoria'];
 
-$pratop = $pratoPrincipal[$codigo];
+if($categoria=='entrada') {
+    $pratop = $entrada[$codigo];
+
+} elseif ($categoria== 'prncipal') {
+    $pratop = $pratoPrincipal[$codigo];
+
+}
 ?>
 <html lang="pt-br">
 <head>
@@ -69,6 +76,7 @@ $pratop = $pratoPrincipal[$codigo];
     <b class="preco"><?php print $pratop['preco'];?></b>
     <p><?php print $pratop['resumo'];?></p>
     </div>
+    
     
     
     </div>

@@ -107,12 +107,12 @@ require_once 'cardapio.php';
     <div class="container">
         <?php
         //contador para percorrer o array   
-        $contador1 = 0;
+        $contador = 0;
 
         //foreach para montar o card  das entradas
         foreach ($entrada as $entra) {
             echo '
-            <a href="pratos.php?codigoprato=' . $contador1 . '" class="card">
+            <a href="pratos.php?categoria=entrada&codigoprato=' . $contador . '" class="card">
                     <div class="info">
                         <h3>' . $entra['nome'] . '</h3>
                         <p>' . $entra['resumo'] . '</p>
@@ -122,20 +122,17 @@ require_once 'cardapio.php';
                         <img src="./imagem/' . $entra['imagem'] . '">
                     </div>     
                 </a>';
-            $contador1++;
+            $contador++;
         }
         ?>
     </div>
     <h1>Pratos Principais</h1>
     <div class="container">
         <?php
-        //contador para percorrer o array 
-        $contador2 = 0;
-
         //foreach para montar o card dos pratos principais  
         foreach ($pratoPrincipal as $princ) {
             echo '
-            <a href="pratos.php?codigoprato=' . $contador2 . '" class="card">
+            <a href="pratos.php?categoria=principal&codigoprato=' . $contador . '" class="card">
                     <div class="info">
                         <h3>' . $princ['nome'] . '</h3>
                         <p>' . $princ['resumo'] . '</p>
@@ -145,20 +142,17 @@ require_once 'cardapio.php';
                         <img src="./imagem/' . $princ['imagem'] . '">
                     </div>     
                 </a>';
-            $contador2++;
+            $contador++;
         }
         ?>
     </div>
     <h1>Acompanhamentos</h1>
     <div class="container">
         <?php
-        //contador para percorrer o array    
-        $contador3 = 0;
-
         //foreach para montar o card dos acompanhamentos
         foreach ($acompanhamento as $acomp) {
             echo '
-            <a href="pratos.php?codigoprato=' . $contador3 . '" class="card">
+            <a href="pratos.php?codigoprato=' . $contador . '" class="card">
                     <div class="info">
                         <h3>' . $acomp['nome'] . '</h3>
                         <p>' . $acomp['resumo'] . '</p>
@@ -168,20 +162,17 @@ require_once 'cardapio.php';
                         <img src="./imagem/' . $acomp['imagem'] . '">
                     </div>     
                 </a>';
-            $contador3++;
+            $contador++;
         }
         ?>
     </div>
     <h1>Bebidas</h1>
     <div class="container">
         <?php
-        //contador para percorrer o array   
-        $contador4 = 0;
-
         //foreach para montar o card das bebidas
         foreach ($bebidas as $bebid) {
             echo '
-            <a href="pratos.php?codigoprato=' . $contador4 . '" class="card">
+            <a href="pratos.php?codigoprato=' . $contador . '" class="card">
                     <div class="info">
                         <h3>' . $bebid['nome'] . '</h3>
                         <p>' . $bebid['resumo'] . '</p>
@@ -191,18 +182,16 @@ require_once 'cardapio.php';
                         <img src="./imagem/' . $bebid['imagem'] . '">
                     </div>     
                 </a>';
-            $contador4++;
+            $contador++;
         }
         ?>
     </div>
     <h3>Drinks:</h3>
     <div class="container">
         <?php
-        //contador para percorrer o array   
-        $contador5 = 0;
         foreach ($drinks as $drink) {
             echo '
-            <a href="pratos.php?codigoprato=' . $contador5 . '" class="card">
+            <a href="pratos.php?codigoprato=' . $contador . '" class="card">
                     <div class="info">
                         <h3>' . $drink['nome'] . '</h3>
                         <p>' . $drink['resumo'] . '</p>
@@ -212,7 +201,7 @@ require_once 'cardapio.php';
                         <img src="./imagem/' . $drink['imagem'] . '">
                     </div>     
                 </a>';
-            $contador5++;
+            $contador++;
         }
         ?>
     </div>
