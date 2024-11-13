@@ -147,7 +147,7 @@ $acompanhamento = [
         'nome' => 'Salade Verte',
         'preco' => 'R$ 38,00',
         'imagem' => 'acompanhamento8.jfif',
-        'resumo' => 'Salada fresca de folhas verdes, temperada com molho vinagrete simples.'    
+        'resumo' => 'Salada fresca de folhas verdes, temperada com molho vinagrete simples.'
     ]
 ];
 $bebidas = [
