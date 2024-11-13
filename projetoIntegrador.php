@@ -166,10 +166,6 @@ require_once 'cardapio.php';
             <li><a href="#drink">Drinks</a></li>
         </ul>
     </nav>
-    <!-- botao pra subir ao topo da pagina -->
-    <div class="botaoUP">
-        <h1 class="primeiro"><a name="entrada"></a>Entradas</h1>
-        <div class="container">
             <?php
             //contador para percorrer o array   
             $contador1 = 0;
