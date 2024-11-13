@@ -152,7 +152,7 @@ require_once 'cardapio.php';
         //foreach para montar o card dos acompanhamentos
         foreach ($acompanhamento as $acomp) {
             echo '
-            <a href="pratos.php?codigoprato=' . $contador . '" class="card">
+            <a href="pratos.php?categoria=entradacodigoprato=' . $contador . '" class="card">
                     <div class="info">
                         <h3>' . $acomp['nome'] . '</h3>
                         <p>' . $acomp['resumo'] . '</p>
