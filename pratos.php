@@ -4,17 +4,19 @@ $codigo = $_GET['codigoprato'];
 $categoria = $_GET['categoria'];
 
 if($categoria=='entrada') {
-    $pratop = $entrada[$codigo];
-
-} elseif ($categoria== 'principal') {
-    $pratop = $pratoPrincipal[$codigo];
-
-}elseif ($categoria== 'prncipal') {
-    $pratop = $pratoPrincipal[$codigo];
+    $prato = $entrada[$codigo];
 }
-elseif ($categoria== 'prncipal') {
-    $pratop = $pratoPrincipal[$codigo];
-}
+elseif ($categoria=='principal') {
+    $prato = $pratoPrincipal[$codigo];}
+
+elseif ($categoria=='acompanhamento') {
+    $prato = $acompanhamento[$codigo];}
+
+elseif ($categoria=='bebida') {
+    $prato = $bebidas[$codigo];}
+
+else{
+    $prato = $drinks[$codigo];}
 ?>
 <html lang="pt-br">
 <head>
@@ -24,13 +26,14 @@ elseif ($categoria== 'prncipal') {
         <?php
 
 
-        print $pratoPrincipal['nome'];
+        print $prato['nome'];
     ?>
     </title>
     <style>
 
     .info{
         margin-left: 30px;
+        width: 450px;
         
     }
     img{
@@ -73,13 +76,13 @@ elseif ($categoria== 'prncipal') {
     </div>
     <div class="container">
     <div class="img">
-    <img src="./imagem/<?php print $pratop['imagem']; ?>">
+    <img src="./imagem/<?php print $prato['imagem']; ?>">
     </div>
 
     <div class="info">
-    <h1><?php print $pratop['nome'];?></h1>
-    <b class="preco"><?php print $pratop['preco'];?></b>
-    <p><?php print $pratop['resumo'];?></p>
+    <h1><?php print $prato['nome'];?></h1>
+    <b class="preco"><?php print $prato['preco'];?></b>
+    <p><?php print $prato['resumo'];?></p>
     </div>
     
     
