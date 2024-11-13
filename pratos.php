@@ -6,9 +6,14 @@ $categoria = $_GET['categoria'];
 if($categoria=='entrada') {
     $pratop = $entrada[$codigo];
 
-} elseif ($categoria== 'prncipal') {
+} elseif ($categoria== 'principal') {
     $pratop = $pratoPrincipal[$codigo];
 
+}elseif ($categoria== 'prncipal') {
+    $pratop = $pratoPrincipal[$codigo];
+}
+elseif ($categoria== 'prncipal') {
+    $pratop = $pratoPrincipal[$codigo];
 }
 ?>
 <html lang="pt-br">
