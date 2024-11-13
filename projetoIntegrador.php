@@ -14,17 +14,22 @@ require_once 'cardapio.php';
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- comeco do style -->
     <style>
-
         body {
             background-color: rgb(242, 236, 190);
         }
 
-/* tag do primeiro titulo pra dar um espacamento diferente */
+        /* tag do primeiro titulo pra dar um espacamento diferente */
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         .primeiro {
             color: rgb(154, 59, 59);
             text-align: center;
             font-size: 50px;
             margin-bottom: 25px;
+            margin-top: 100px;
         }
 
         h1 {
@@ -96,22 +101,82 @@ require_once 'cardapio.php';
             margin-left: 15px;
             width: 300px;
         }
+
+        .ancora {
+            position: fixed;
+            top: 1%;
+            width: 675px;
+            height: 55px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgb(242, 236, 190);
+            padding: 10px 30px;
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .ancora ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        .ancora li {
+            display: inline;
+        }
+
+        .ancora a {
+            text-decoration: none;
+            color: white;
+            background-color: rgb(154, 59, 59);
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .ancora a:hover {
+            background-color: rgb(175, 60, 60);
+            transform: scale(1.05);
+        }
     </style>
+    <!-- inicio do js -->
+    <script>
+        window.onload = function () {
+            window.scrollTo(100, 0);
+        };
+    </script>
 </head>
 <header>
     <!-- navegacao -->
 </header>
 
 <body>
-    <h1 class="primeiro">Entradas</h1>
-    <div class="container">
-        <?php
-        //contador para percorrer o array   
-        $contador1 = 0;
+    <!-- navegacao entre as categorias -->
+    <nav class="ancora">
+        <ul>
+            <li><a href="#entrada">Entradas</a></li>
+            <li><a href="#principal">Pratos Principais</a></li>
+            <li><a href="#acompanhamento">Acompanhamentos</a></li>
+            <li><a href="#bebida">Bebidas</a></li>
+            <li><a href="#drink">Drinks</a></li>
+        </ul>
+    </nav>
+    <!-- botao pra subir ao topo da pagina -->
+    <div class="botaoUP">
+        <h1 class="primeiro"><a name="entrada"></a>Entradas</h1>
+        <div class="container">
+            <?php
+            //contador para percorrer o array   
+            $contador1 = 0;
 
-        //foreach para montar o card  das entradas
-        foreach ($entrada as $entra) {
-            echo '
+            //foreach para montar o card  das entradas
+            foreach ($entrada as $entra) {
+                echo '
             <a href="pratos.php?categoria=entrada&codigoprato=' . $contador1 . '" class="card">
                     <div class="info">
                         <h3>' . $entra['nome'] . '</h3>
@@ -122,19 +187,19 @@ require_once 'cardapio.php';
                         <img src="./imagem/' . $entra['imagem'] . '">
                     </div>     
                 </a>';
-            $contador1++;
-        }
-        ?>
-    </div>
-    <h1>Pratos Principais</h1>
-    <div class="container">
-        <?php
-        //contador para percorrer o array   
-        $contador2 = 0;
+                $contador1++;
+            }
+            ?>
+        </div>
+        <h1><a name="principal"></a>Pratos Principais</h1>
+        <div class="container">
+            <?php
+            //contador para percorrer o array   
+            $contador2 = 0;
 
-        //foreach para montar o card dos pratos principais 
-        foreach ($pratoPrincipal as $princ) {
-            echo '
+            //foreach para montar o card dos pratos principais 
+            foreach ($pratoPrincipal as $princ) {
+                echo '
             <a href="pratos.php?categoria=principal&codigoprato=' . $contador2 . '" class="card">
                     <div class="info">
                         <h3>' . $princ['nome'] . '</h3>
@@ -145,19 +210,19 @@ require_once 'cardapio.php';
                         <img src="./imagem/' . $princ['imagem'] . '">
                     </div>     
                 </a>';
-            $contador2++;
-        }
-        ?>
-    </div>
-    <h1>Acompanhamentos</h1>
-    <div class="container">
-        <?php
-        //contador para percorrer o array   
-        $contador3 = 0;
+                $contador2++;
+            }
+            ?>
+        </div>
+        <h1><a name="acompanhamento"></a>Acompanhamentos</h1>
+        <div class="container">
+            <?php
+            //contador para percorrer o array   
+            $contador3 = 0;
 
-        //foreach para montar o card dos acompanhamentos
-        foreach ($acompanhamento as $acomp) {
-            echo '
+            //foreach para montar o card dos acompanhamentos
+            foreach ($acompanhamento as $acomp) {
+                echo '
             <a href="pratos.php?categoria=acompanhamento&codigoprato=' . $contador3 . '" class="card">
                     <div class="info">
                         <h3>' . $acomp['nome'] . '</h3>
@@ -168,19 +233,19 @@ require_once 'cardapio.php';
                         <img src="./imagem/' . $acomp['imagem'] . '">
                     </div>     
                 </a>';
-            $contador3++;
-        }
-        ?>
-    </div>
-    <h1>Bebidas</h1>
-    <div class="container">
-        <?php
-        //contador para percorrer o array   
-        $contador4 = 0;
+                $contador3++;
+            }
+            ?>
+        </div>
+        <h1><a name="bebida"></a>Bebidas</h1>
+        <div class="container">
+            <?php
+            //contador para percorrer o array   
+            $contador4 = 0;
 
-        //foreach para montar o card das bebidas
-        foreach ($bebidas as $bebid) {
-            echo '
+            //foreach para montar o card das bebidas
+            foreach ($bebidas as $bebid) {
+                echo '
             <a href="pratos.php?categoria=bebida&codigoprato=' . $contador4 . '" class="card">
                     <div class="info">
                         <h3>' . $bebid['nome'] . '</h3>
@@ -191,18 +256,18 @@ require_once 'cardapio.php';
                         <img src="./imagem/' . $bebid['imagem'] . '">
                     </div>     
                 </a>';
-            $contador4++;
-        }
-        ?>
-    </div>
-    <h3>Drinks:</h3>
-    <div class="container">
-        <?php
-        //contador para percorrer o array   
-        $contador5 = 0;
+                $contador4++;
+            }
+            ?>
+        </div>
+        <h3><a name="drink"></a>Drinks:</h3>
+        <div class="container">
+            <?php
+            //contador para percorrer o array   
+            $contador5 = 0;
 
-        foreach ($drinks as $drink) {
-            echo '
+            foreach ($drinks as $drink) {
+                echo '
             <a href="pratos.php?categoria=drinks&codigoprato=' . $contador5 . '" class="card">
                     <div class="info">
                         <h3>' . $drink['nome'] . '</h3>
@@ -213,23 +278,26 @@ require_once 'cardapio.php';
                         <img src="./imagem/' . $drink['imagem'] . '">
                     </div>     
                 </a>';
-            $contador5++;
-        }
-        ?>
-    </div>
-    <footer>
-        <div class="footertext">
-            <p>&copy; 2024 Gusteau's. Todos os direitos reservados.</p>
-            <p>Endereço: R. Santo André, 680 - Boa Vista, São Caetano do Sul-SP</p>
-            <p>Telefone: (11) 4227-7450 | Email: contato@restaurante.com.br</p>
-            <div class="links">
-                <i class="fa-brands fa-instagram" href="https://www.instagram.com/senai.sp/" style="padding:7px;"></i>
-                <i class="fa-brands fa-x-twitter" href="https://www.twitter.com/seutwitter" style="padding:7px;"></i>
-                <i class="fa-brands fa-facebook" href="https://www.facebook.com/seufacebook" style="padding:7px;"></i>
-            </div>
+                $contador5++;
+            }
+            ?>
         </div>
+        <footer>
+            <div class="footertext">
+                <p>&copy; 2024 Gusteau's. Todos os direitos reservados.</p>
+                <p>Endereço: R. Santo André, 680 - Boa Vista, São Caetano do Sul-SP</p>
+                <p>Telefone: (11) 4227-7450 | Email: contato@restaurante.com.br</p>
+                <div class="links">
+                    <i class="fa-brands fa-instagram" href="https://www.instagram.com/senai.sp/"
+                        style="padding:7px;"></i>
+                    <i class="fa-brands fa-x-twitter" href="https://www.twitter.com/seutwitter"
+                        style="padding:7px;"></i>
+                    <i class="fa-brands fa-facebook" href="https://www.facebook.com/seufacebook"
+                        style="padding:7px;"></i>
+                </div>
+            </div>
 
-    </footer>
+        </footer>
 </body>
 
 </html>
