@@ -236,3 +236,8 @@ $drinks = [
         'ingredientes' => 'Conhaque, Chartreuse (licor herbal), suco de limão.'
     ]
 ];
+if (!isset($_SESSION['ingredientes'])) {
+    $_SESSION['ingredientes'] = $ingredientes;
+} else {
+    $ingredientes = $_SESSION['ingredientes'];
+}
