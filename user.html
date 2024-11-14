@@ -1,0 +1,88 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesquisa de satisfação</title>
+    <!-- inicio do style -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(242, 236, 190);
+            color: rgb(154, 59, 59);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: rgb(226, 199, 153);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            color: rgb(154, 59, 59);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        input[type="text"]{
+            width: 94.5%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid rgb(192, 130, 97);
+            border-radius: 4px;
+            background-color: #fff;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            background-color: rgb(154, 59, 59);
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            left: 50%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: rgb(192, 130, 97);
+        }
+
+        .form {
+            margin-bottom: 15px;
+        }
+
+        .form textarea {
+            resize: vertical;
+        }
+</style>
+</head>
+<body>
+<div class="container">
+        <h2>Pesquisa de satisfação</h2>
+        <form>
+        <div class="form-group">
+            <label for="nome">Nome Completo:</label>
+            <input type="text" id="nome" name="nome" required>
+        
+            <label for="mensagem">Mensagem:</label>
+            <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+        </div>
+        </form>
+</body>
+</html>
