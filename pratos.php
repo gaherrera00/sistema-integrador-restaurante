@@ -31,7 +31,7 @@ if ($categoria == 'entrada') {
         .info {
             margin-left: 30px;
             width: 450px;
-
+            
         }
 
         img {
@@ -87,7 +87,7 @@ if ($categoria == 'entrada') {
         <div class="info">
             <h1><?php print $prato['nome']; ?></h1>
             <b class="preco"><?php print $prato['preco']; ?></b>
-            <p><?php print $prato['resumo']; ?></p>
+            <p><?php print $prato['ingredientes']; ?></p>
         </div>
 
 

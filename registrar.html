@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+    <!-- inicio do style -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(242, 236, 190);
+            color: rgb(154, 59, 59);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: rgb(226, 199, 153);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            color: rgb(154, 59, 59);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"] {
+            width: 94.5%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid rgb(192, 130, 97);
+            border-radius: 4px;
+            background-color: #fff;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            background-color: rgb(154, 59, 59);
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: rgb(192, 130, 97);
+        }
+
+        .form {
+            margin-bottom: 15px;
+        }
+
+        .form textarea {
+            resize: vertical;
+        }
+
+        .criarConta {
+            font-size: 14.5px;
+            text-align: center;
+            margin: 20px 0 15px;
+            color: aliceblue;
+        }
+
+        .criarConta p a {
+            color: whitesmoke;
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Cadastro</h2>
+        <form>
+            <div class="form">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" required>
+
+                <label for="data_nascimento">Data de Nascimento:</label>
+                <input type="date" id="data_nascimento" name="data_nascimento" required>
+
+                <input type="submit" value="Cadastrar">
+            </div>
+            <div class="criarConta">
+                <p>Já tem uma conta? <a href="./index.html">Faça Login</a></p>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>
