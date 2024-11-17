@@ -1,7 +1,10 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesquisa de satisfação</title>
+    <title>Pesquisa de Satisfação</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -17,61 +20,99 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            flex-direction: column;
+        }
+
+        .voltar {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: transparent;
+            color: rgb(154, 59, 59);
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .voltar:hover {
+            text-decoration: underline;
+        }
+
+        .voltar i {
+            margin-right: 8px;
         }
 
         .container {
             background-color: rgb(226, 199, 153);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 400px;
+            max-width: 500px;
+            z-index: 1;
         }
 
-        h1 {
+        h2 {
             text-align: center;
             color: rgb(154, 59, 59);
+            font-size: 24px;
+            margin-bottom: 20px;
         }
 
         label {
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-size: 14px;
             font-weight: bold;
+            color: rgb(154, 59, 59);
         }
 
-        input[type="text"] {
-            width: 94.5%;
-            padding: 10px;
-            margin-bottom: 15px;
+        input[type="text"],
+        textarea {
+            width: 93.5%;
+            padding: 12px;
+            margin-bottom: 20px;
             border: 1px solid rgb(192, 130, 97);
-            border-radius: 4px;
+            border-radius: 6px;
             background-color: #fff;
             font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        textarea:focus {
+            border-color: rgb(154, 59, 59);
         }
 
         input[type="submit"] {
             background-color: rgb(154, 59, 59);
             color: #fff;
             border: none;
-            padding: 12px;
-            border-radius: 4px;
+            padding: 15px;
+            border-radius: 6px;
             cursor: pointer;
             font-size: 16px;
             transition: background-color 0.3s ease;
-            left: 50%;
+            width: 100%;
+            margin-top: 45px;
         }
 
         input[type="submit"]:hover {
             background-color: rgb(192, 130, 97);
         }
 
-        .form {
-            margin-bottom: 15px;
+        .form-group {
+            margin-bottom: 25px;
         }
 
-        .form textarea {
-            resize: vertical;
+        .caixinha {
+            text-align: center;
+            background-color: rgba(192, 130, 97, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
         }
 
         .avaliacao-estrelas {
@@ -88,27 +129,13 @@
             color: gold;
         }
     </style>
-    <script>
-        function delay(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
-        async function avaliar(valor) {
-            const estrelas = document.querySelectorAll('.estrela');
-            estrelas.forEach(estrela => {
-                estrela.classList.remove('selecionada');
-            });
-            for (let i = 0; i < valor; i++) {
-                estrelas[i].classList.add('selecionada');
-                await delay(150);
-            }
-        }
-
-    </script>
 </head>
 
 <body>
+    <a href="projetoIntegrador.php"><button class="voltar"><i class="fa-solid fa-angle-left"></i>Voltar</button></a>
+
     <div class="container">
-        <h2>Pesquisa de satisfação</h2>
+        <h2>Pesquisa de Satisfação</h2>
         <form>
             <div class="form-group">
                 <label for="nome">Nome Completo:</label>
@@ -117,15 +144,20 @@
                 <label for="mensagem">Mensagem:</label>
                 <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
             </div>
-            <div class="avaliacao-estrelas">
-                <span class="estrela" data-valor="1" onclick="avaliar(1)">&#9733;</span>
-                <span class="estrela" data-valor="2" onclick="avaliar(2)">&#9733;</span>
-                <span class="estrela" data-valor="3" onclick="avaliar(3)">&#9733;</span>
-                <span class="estrela" data-valor="4" onclick="avaliar(4)">&#9733;</span>
-                <span class="estrela" data-valor="5" onclick="avaliar(5)">&#9733;</span>
+
+            <div class="caixinha">
+                <label for="avaliacao">Avaliação:</label>
+                <div class="avaliacao-estrelas" id="avaliacao">
+                    <span class="estrela" data-valor="1" onclick="avaliar(1)">&#9733;</span>
+                    <span class="estrela" data-valor="2" onclick="avaliar(2)">&#9733;</span>
+                    <span class="estrela" data-valor="3" onclick="avaliar(3)">&#9733;</span>
+                    <span class="estrela" data-valor="4" onclick="avaliar(4)">&#9733;</span>
+                    <span class="estrela" data-valor="5" onclick="avaliar(5)">&#9733;</span>
+                </div>
             </div>
+            <input onclick="alert('Agradeçemos pela sua avaliação!')" type="submit" value="Enviar">
+        </form>
     </div>
-    </form>
 </body>
 
 </html>

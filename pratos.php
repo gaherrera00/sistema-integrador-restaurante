@@ -27,11 +27,14 @@ if ($categoria == 'entrada') {
         print $prato['nome'];
         ?>
     </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         .info {
             margin-left: 30px;
             width: 450px;
-            
+
         }
 
         img {
@@ -59,15 +62,25 @@ if ($categoria == 'entrada') {
             margin-top: 40px;
         }
 
-        button {
-            width: 890px;
-            height: 40px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            background-color: rgb(242, 236, 190);
+        .voltar{
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: transparent;
             color: rgb(154, 59, 59);
+            border: none;
+            font-size: 18px;
             cursor: pointer;
-            outline-width: 0.5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .voltar:hover {
+            text-decoration: underline;
+        }
+
+        .voltar i {
+            margin-right: 8px;
         }
     </style>
 </head>
@@ -76,9 +89,7 @@ if ($categoria == 'entrada') {
 </header>
 
 <body>
-    <div class="botao1">
-        <a href="projetointegrador.php"><button>Voltar</button></a>
-    </div>
+    <a href="projetoIntegrador.php"><button class="voltar"><i class="fa-solid fa-angle-left"></i>Voltar</button></a>
     <div class="container">
         <div class="img">
             <img src="./imagem/<?php print $prato['imagem']; ?>">

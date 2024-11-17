@@ -256,5 +256,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['titulo']) && isset($_
 
 }
 else{
-    echo "Nenhum prato foi enviado";
+    echo "";
 }

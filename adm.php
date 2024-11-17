@@ -116,17 +116,17 @@
                 <option value="$bebidas">Bebidas</option>
                 <option value="$drinks">Drinks</option>
             </select>
+            <input type="submit" value="enviar">
     </div>
     </form>
 </body>
 <?php
-session_start();
 require_once 'cardapio.php';
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    $nome = $_POST['titulo'];
-    $resumo = $_POST['resumo'];
-    $ingredientes = $_POST['ingredientes'];
-    $categoria = $_POST['categoria'];
+    $nome = isset($_POST['titulo']);
+    $resumo = isset($_POST['resumo']);
+    $ingredientes = isset($_POST['ingredientes']);
+    $categoria = isset($_POST['categoria']);
     if (!isset($_SESSION['ingredientes'])) {
         $_SESSION['ingredientes'] = [];
     }
@@ -137,6 +137,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         'ingredientes' => $ingredientes,
     ];
     array_push($_SESSION['ingredientes'], $novoPrato);
+}
+else{
+    echo "";
 }
 ?>
 
