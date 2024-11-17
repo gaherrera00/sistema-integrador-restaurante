@@ -1,20 +1,21 @@
 <?php
+session_start();
 require_once 'cardapio.php';
-
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    // Obtém os dados do formulário
     $nome = $_POST['titulo'];
     $resumo = $_POST['resumo'];
     $ingredientes = $_POST['ingredientes'];
-
+    if (!isset($_SESSION['ingredientes'])) {
+        $_SESSION['ingredientes'] = [];
+    }
     $novoPrato = [
-        'nome' => $titulo,
+        'nome' => $nome,
         'imagem' => '',
         'resumo' => $resumo,
         'ingredientes' => $ingredientes,
     ];
-    array_push($ingredientes, $novoPrato);
-
-    $_SESSION['ingredientes'] = $ingredientes;
+    array_push($_SESSION['ingredientes'], $novoPrato);
 }
 ?>
 <!DOCTYPE html>

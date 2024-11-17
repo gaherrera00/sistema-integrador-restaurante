@@ -2,6 +2,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pesquisa de satisfação</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- inicio do style -->
     <style>
         body {
@@ -37,7 +40,7 @@
             font-weight: bold;
         }
 
-        input[type="text"]{
+        input[type="text"] {
             width: 94.5%;
             padding: 10px;
             margin-bottom: 15px;
@@ -70,19 +73,59 @@
         .form textarea {
             resize: vertical;
         }
-</style>
+
+        .avaliacao-estrelas {
+            font-size: 40px;
+            color: #ccc;
+            cursor: pointer;
+        }
+
+        .avaliacao-estrelas .estrela {
+            transition: color 0.5s ease;
+        }
+
+        .avaliacao-estrelas .estrela.selecionada {
+            color: gold;
+        }
+    </style>
+    <script>
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        async function avaliar(valor) {
+            const estrelas = document.querySelectorAll('.estrela');
+            estrelas.forEach(estrela => {
+                estrela.classList.remove('selecionada');
+            });
+            for (let i = 0; i < valor; i++) {
+                estrelas[i].classList.add('selecionada');
+                await delay(150);
+            }
+        }
+
+    </script>
 </head>
+
 <body>
-<div class="container">
+    <div class="container">
         <h2>Pesquisa de satisfação</h2>
         <form>
-        <div class="form-group">
-            <label for="nome">Nome Completo:</label>
-            <input type="text" id="nome" name="nome" required>
-        
-            <label for="mensagem">Mensagem:</label>
-            <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
-        </div>
-        </form>
+            <div class="form-group">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="mensagem">Mensagem:</label>
+                <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+            </div>
+            <div class="avaliacao-estrelas">
+                <span class="estrela" data-valor="1" onclick="avaliar(1)">&#9733;</span>
+                <span class="estrela" data-valor="2" onclick="avaliar(2)">&#9733;</span>
+                <span class="estrela" data-valor="3" onclick="avaliar(3)">&#9733;</span>
+                <span class="estrela" data-valor="4" onclick="avaliar(4)">&#9733;</span>
+                <span class="estrela" data-valor="5" onclick="avaliar(5)">&#9733;</span>
+            </div>
+    </div>
+    </form>
 </body>
+
 </html>
