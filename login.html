@@ -41,7 +41,7 @@
         }
 
         input[type="text"],
-        input[type="password"]{
+        input[type="password"] {
             width: 94.5%;
             padding: 10px;
             margin-bottom: 15px;
@@ -67,14 +67,6 @@
             background-color: rgb(192, 130, 97);
         }
 
-        .form {
-            margin-bottom: 15px;
-        }
-
-        .form textarea {
-            resize: vertical;
-        }
-
         .criarConta {
             font-size: 14.5px;
             text-align: center;
@@ -97,10 +89,10 @@
         <h1>Login</h1>
         <form action="formulario.php" method="POST">
             <label for="text">Usuario:</label>
-            <input type="text" id="text" name="user" required>
+            <input type="text" name="user" required>
 
             <label for="senha">Senha:</label>
-            <input type="password" id="senha" name="senha" required>
+            <input type="password" name="senha" required>
 
             <div class="form-group">
                 <input type="submit" value="Cadastrar">

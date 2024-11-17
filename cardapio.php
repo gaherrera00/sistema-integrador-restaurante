@@ -236,8 +236,25 @@ $drinks = [
         'ingredientes' => 'Conhaque, Chartreuse (licor herbal), suco de limão.'
     ]
 ];
+//verificacoes de envio
+session_start();
 if (!isset($_SESSION['ingredientes'])) {
-    $_SESSION['ingredientes'] = $ingredientes;
-} else {
-    $ingredientes = $_SESSION['ingredientes'];
+    $_SESSION['ingredientes'] = [];
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['titulo']) && isset($_POST['resumo']) && isset($_POST['ingredientes'])) {
+    $nome = $_POST['titulo'];
+    $resumo = $_POST['resumo'];
+    $ingredientes = $_POST['ingredientes'];
+    $categoria = $_POST['categoria'];
+    $novoPrato = [
+        'nome' => $nome,
+        'resumo' => $resumo,
+        'ingredientes' => $ingredientes,
+    ];
+    $_SESSION['ingredientes'][$categoria][] = $novoPrato;
+
+}
+else{
+    echo "Nenhum prato foi enviado";
 }
