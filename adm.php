@@ -14,6 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar'])) {
     $preco = $_POST['preco'];
     $categoria = $_POST['categoria'];
 
+    // Remover "R$ " e garantir que o valor de preço esteja correto
+    $preco = str_replace('R$ ', '', $preco);
+    $preco = str_replace(',', '.', $preco); // Substitui vírgula por ponto para evitar erro no PHP
+
     $novoPrato = [
         'nome' => $nome,
         'resumo' => $resumo,
@@ -40,8 +44,8 @@ if (isset($_GET['excluir'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administração de Cardápio</title>
+    <!-- incio do style -->
     <style>
-        /* Reset básico */
         * {
             margin: 0;
             padding: 0;
@@ -49,7 +53,6 @@ if (isset($_GET['excluir'])) {
             text-decoration: none;
         }
 
-        /* Estilo do body */
         body {
             font-family: Arial, sans-serif;
             background-color: rgb(242, 236, 190);
@@ -62,7 +65,6 @@ if (isset($_GET['excluir'])) {
             height: 100vh;
         }
 
-        /* Contêiner principal */
         .container {
             background-color: rgb(226, 199, 153);
             padding: 30px;
@@ -72,7 +74,6 @@ if (isset($_GET['excluir'])) {
             max-width: 700px;
         }
 
-        /* Cabeçalho */
         header {
             text-align: center;
             margin-bottom: 20px;
@@ -83,14 +84,12 @@ if (isset($_GET['excluir'])) {
             font-size: 24px;
         }
 
-        /* Título da seção */
         h2 {
             font-size: 20px;
             color: rgb(154, 59, 59);
             margin-bottom: 15px;
         }
 
-        /* Formulário */
         form input,
         form textarea,
         form select,
@@ -105,7 +104,7 @@ if (isset($_GET['excluir'])) {
             transition: border-color 0.3s;
         }
 
-        form input[type="number"] {
+        form input[type="text"] {
             width: 100%;
             padding: 12px;
             margin-bottom: 15px;
@@ -119,9 +118,17 @@ if (isset($_GET['excluir'])) {
             background-color: #fff;
         }
 
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            color: rgb(154, 59, 59);
+        }
+
         form input[type="text"]:focus,
         form textarea:focus,
-        form input[type="number"]:focus {
+        form select:focus {
             border-color: rgb(154, 59, 59);
         }
 
@@ -140,28 +147,11 @@ if (isset($_GET['excluir'])) {
             background-color: rgb(192, 130, 97);
         }
 
-        /* Estilo da lista de pratos */
-        .lista-pratos ul {
-            list-style-type: none;
-            padding-left: 0;
+        textarea {
+            min-height: 100px;
+            resize: vertical;
         }
 
-        .lista-pratos li {
-            margin: 10px 0;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        .lista-pratos a.excluir {
-            color: rgb(154, 59, 59);
-            text-decoration: none;
-            font-weight: 600;
-            position: relative;
-        }
-
-        /* Estilo do link "voltar" */
         .voltar {
             position: absolute;
             top: 20px;
@@ -182,23 +172,23 @@ if (isset($_GET['excluir'])) {
         .voltar i {
             margin-right: 8px;
         }
-
-        .segundo {
-            margin-top: 7px;
-        }
-
-        .segundo a {
-            color: rgb(154, 59, 59, 0.5);
+        .segundo{
             padding: 7px;
+            
+        }
+        .segundo a{
+            color: rgb(154, 59, 59, 0.8);
         }
     </style>
     <script>
-        // Função para formatar o preço
         function formatarPreco(input) {
-            let valor = input.value;
+            let valor = input.value.replace('R$ ', '').replace(/\D/g, '');
+            if (valor.length > 2) {
+                valor = valor.slice(0, -2) + ',' + valor.slice(-2);
+            }
+            input.value = 'R$ ' + valor;
         }
     </script>
-
 </head>
 
 <body>
@@ -215,23 +205,28 @@ if (isset($_GET['excluir'])) {
         <section class="formulario">
             <h2>Adicionar Novo Prato</h2>
             <form action="index.php" method="POST">
-                <label for="text">Usuário:</label>
-                <input type="text" name="nome" placeholder="Nome do prato" value="bajdb" required>
+                <label for="nome">Nome do Prato:</label>
+                <input type="text" id="nome" name="nome" required>
 
-                <textarea name="resumo" placeholder="Resumo do prato" required></textarea>
+                <label for="resumo">Resumo do Prato:</label>
+                <textarea id="resumo" name="resumo"required></textarea>
 
-                <textarea name="ingredientes" placeholder="Ingredientes" required></textarea>
+                <label for="ingredientes">Ingredientes:</label>
+                <textarea id="ingredientes" name="ingredientes"required></textarea>
 
                 <label for="preco">Preço:</label>
                 <input type="text" id="preco" name="preco" value="R$ " required oninput="formatarPreco(this)">
 
-                <select name="categoria">
+                <label for="categoria">Categoria:</label>
+                <select name="categoria" id="categoria">
                     <option value="entrada">Entrada</option>
                     <option value="pratoPrincipal">Prato Principal</option>
                     <option value="bebida">Bebida</option>
                 </select>
+
                 <button type="submit" name="adicionar">Adicionar Prato</button>
             </form>
+
         </section>
 
         <!-- Lista de Pratos Existentes -->
@@ -243,7 +238,7 @@ if (isset($_GET['excluir'])) {
                         <li>
                             <strong><?= $prato['nome'] ?></strong> - <?= $prato['categoria'] ?><br>
                             <small><?= $prato['resumo'] ?></small><br>
-                            <strong>Preço: R$ <?= $prato['preco'] ?></strong>
+                            <strong>Preço: R$ <?= number_format($prato['preco'], 2, ',', '.') ?></strong>
                             <a href="index.php?excluir=<?= $index ?>" class="excluir">Excluir</a>
                         </li>
                     <?php endforeach; ?>
@@ -252,7 +247,6 @@ if (isset($_GET['excluir'])) {
                 <p>Não há pratos cadastrados.</p>
             <?php endif; ?>
         </section>
-
     </div>
 </body>
 
