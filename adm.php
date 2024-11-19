@@ -17,21 +17,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar'])) {
     //formatar o formato de reais
     $preco = str_replace('R$ ', '', $preco);
     $preco = str_replace(',', '.', $preco); // Substitui vírgula por ponto para evitar erro no PHP
-    
+
     $dir = "imagem/";
-    
+
     $imagem = $dir . basename($_FILES["imagem"]["name"]);
-    
+
     $caminho = $dir;
-    
+
     $nomearquivo = basename($imagem);
-    
+
     // print 'imagem:'.$imagem;
     if (move_uploaded_file($_FILES["imagem"]["tmp_name"], $imagem)) {
 
         echo "O arquivo" . htmlspecialchars($nomearquivo) . "foi enviado com sucesso . (" . $caminho . ")";
 
-    } else{
+    } else {
         echo "erro";
     }
 
@@ -73,6 +73,7 @@ if (isset($_GET['excluir'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>Administração de Cardápio</title>
     <!-- incio do style -->
     <style>
@@ -239,6 +240,46 @@ if (isset($_GET['excluir'])) {
         input[type="file"]::-webkit-file-upload-button:hover {
             background-color: rgb(192, 130, 97);
         }
+
+        .caixinha {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 150px;
+            height: 100px;
+            background-color: rgb(154, 59, 59);
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        /* Estilo do botão de Logout */
+        .logout-btn {
+            width: 100%;
+            /* Botão ocupa toda a largura da caixinha */
+            padding: 8px;
+            background-color: #fff;
+            /* Fundo branco para o botão */
+            color: rgb(154, 59, 59);
+            /* Cor do texto do botão */
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: rgb(192, 130, 97);
+            /* Cor de fundo quando o mouse passa em cima */
+            color: white;
+            /* Cor do texto fica branca quando o botão é hover */
+        }
     </style>
     <script>
         function formatarPreco(input) {
@@ -262,7 +303,7 @@ if (isset($_GET['excluir'])) {
         </header>
 
         <!-- formulario de adicao de prato -->
-        <section class="formulario" >
+        <section class="formulario">
             <h2>Adicionar Novo Prato</h2>
             <form action="adm.php" method="POST" enctype="multipart/form-data">
                 <label for="nome">Nome do Prato:</label>
@@ -313,6 +354,10 @@ if (isset($_GET['excluir'])) {
                 <p>Não há pratos cadastrados.</p>
             <?php endif; ?>
         </section>
+        <div class="caixinha">
+        <i class="fa-solid fa-user"></i>
+        <button class="logout-btn" onclick=<?php session_start();session_destroy();?>>Logout</button>
+        </div>
     </div>
 </body>
 
