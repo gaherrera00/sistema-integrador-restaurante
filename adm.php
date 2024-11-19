@@ -5,7 +5,7 @@ session_start();
 if (!isset($_SESSION['pratos'])) {
     $_SESSION['pratos'] = [];
 }
-
+// print_r($_POST);
 // Adicionar prato
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar'])) {
     $nome = $_POST['nome'];
@@ -13,17 +13,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar'])) {
     $ingredientes = $_POST['ingredientes'];
     $preco = $_POST['preco'];
     $categoria = $_POST['categoria'];
-
+    //$imagem = $_FILES['imagem'];
     //formatar o formato de reais
     $preco = str_replace('R$ ', '', $preco);
     $preco = str_replace(',', '.', $preco); // Substitui vírgula por ponto para evitar erro no PHP
+    
+    $dir = "imagem/";
+    
+    $imagem = $dir . basename($_FILES["imagem"]["name"]);
+    
+    $caminho = $dir;
+    
+    $nomearquivo = basename($imagem);
+    
+    // print 'imagem:'.$imagem;
+    if (move_uploaded_file($_FILES["imagem"]["tmp_name"], $imagem)) {
+
+        echo "O arquivo" . htmlspecialchars($nomearquivo) . "foi enviado com sucesso . (" . $caminho . ")";
+
+    } else{
+        echo "erro";
+    }
 
     $novoPrato = [
         'nome' => $nome,
         'resumo' => $resumo,
         'ingredientes' => $ingredientes,
         'preco' => $preco,
-        'imagem' => ''
+        'imagem' => $nomearquivo
     ];
 
     if ($categoria == 'entrada') {
@@ -37,30 +54,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar'])) {
     } else {
         array_push($_SESSION['drinks'], $novoPrato);
     }
-    
-    $dir = "imagem/";
 
-$imagem = $dir . basename($_FILES["arquivo’]['name"]);
 
-$caminho = $dir;
-
-$nomearquivo = basename ($imagem);
-
-if (move_uploaded_file($_FILES['arquivo']['name'], $file)) {
-
-echo "0 arquivo". htmispecialchars($nomearquivo) . "foi enviado com sucesso
-
-. (*. $caminho.”)";
-
-};
-
+}
 
 // Excluir prato
 if (isset($_GET['excluir'])) {
     $index = $_GET['excluir'];
     unset($_SESSION['pratos'][$index]);
     $_SESSION['pratos'] = array_values($_SESSION['pratos']);
-};
+}
+;
 ?>
 
 <!DOCTYPE html>
@@ -258,9 +262,9 @@ if (isset($_GET['excluir'])) {
         </header>
 
         <!-- formulario de adicao de prato -->
-        <section class="formulario" enctype="multipart/form-data">
+        <section class="formulario" >
             <h2>Adicionar Novo Prato</h2>
-            <form action="adm.php" method="POST">
+            <form action="adm.php" method="POST" enctype="multipart/form-data">
                 <label for="nome">Nome do Prato:</label>
                 <input type="text" id="nome" name="nome" required>
 
@@ -271,10 +275,11 @@ if (isset($_GET['excluir'])) {
                 <textarea id="ingredientes" name="ingredientes" required></textarea>
 
                 <label for="preco">Preço:</label>
-                <input type="text" id="preco" name="preco" value="R$ " required oninput="formatarPreco(this)">
+                <input type="text" id="preco" placeholder="00,00" name="preco" value="R$ " required
+                    oninput="formatarPreco(this)">
 
-                <label for="arquivo">Selecione um arquivo:</label>
-                <input type="file" name="arquivo" required placeholder="00,00">
+                <label for="imagem">Selecione um arquivo:</label>
+                <input type="file" name="imagem" required>
 
                 <label for="categoria">Categoria:</label>
                 <select name="categoria" id="categoria">
