@@ -238,8 +238,20 @@ $drinks = [
 ];
 //verificacoes de envio
 session_start();
-if (!isset($_SESSION['ingredientes'])) {
-    $_SESSION['ingredientes'] = [];
+
+
+if (!isset($_SESSION['entrada'])) {
+    $_SESSION['entrada'] = $entrada;
+    $_SESSION['pratoPrincipal'] = $pratoPrincipal;
+    $_SESSION['acompanhamento'] = $acompanhamento;
+    $_SESSION['bebidas'] = $bebidas;
+    $_SESSION['drinks'] = $drinks;
+} else {
+    $entrada = $_SESSION['entrada'];
+    $pratoPrincipal = $_SESSION['pratoPrincipal'];
+    $acompanhamento = $_SESSION['acompanhamento'];
+    $bebidas = $_SESSION['bebidas'];
+    $drinks = $_SESSION['drinks'];
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['titulo']) && isset($_POST['resumo']) && isset($_POST['ingredientes'])) {
@@ -254,7 +266,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['titulo']) && isset($_
     ];
     $_SESSION['ingredientes'][$categoria][] = $novoPrato;
 
-}
-else{
-    echo "";
 }

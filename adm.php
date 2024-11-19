@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar'])) {
     $preco = $_POST['preco'];
     $categoria = $_POST['categoria'];
 
-    // Remover "R$ " e garantir que o valor de preço esteja correto
+    //formatar o formato de reais
     $preco = str_replace('R$ ', '', $preco);
     $preco = str_replace(',', '.', $preco); // Substitui vírgula por ponto para evitar erro no PHP
 
@@ -23,18 +23,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar'])) {
         'resumo' => $resumo,
         'ingredientes' => $ingredientes,
         'preco' => $preco,
-        'categoria' => $categoria,
-        'imagem' => '' // Placeholder para a imagem
+        'imagem' => ''
     ];
-    $_SESSION['pratos'][] = $novoPrato;
-}
+
+    if ($categoria == 'entrada') {
+        array_push($_SESSION['entrada'], $novoPrato);
+    } else if ($categoria == 'pratoPrincipal') {
+        array_push($_SESSION['pratoPrincipal'], $novoPrato);
+    } else if ($categoria == 'acompanhamento') {
+        array_push($_SESSION['acompanhamento'], $novoPrato);
+    } else if ($categoria == 'bebidas') {
+        array_push($_SESSION['bebidas'], $novoPrato);
+    } else {
+        array_push($_SESSION['drinks'], $novoPrato);
+    }
+    
+    $dir = "imagem/";
+
+$imagem = $dir . basename($_FILES["arquivo’]['name"]);
+
+$caminho = $dir;
+
+$nomearquivo = basename ($imagem);
+
+if (move_uploaded_file($_FILES['arquivo']['name'], $file)) {
+
+echo "0 arquivo". htmispecialchars($nomearquivo) . "foi enviado com sucesso
+
+. (*. $caminho.”)";
+
+};
+
 
 // Excluir prato
 if (isset($_GET['excluir'])) {
     $index = $_GET['excluir'];
     unset($_SESSION['pratos'][$index]);
-    $_SESSION['pratos'] = array_values($_SESSION['pratos']); // Reindexa o array
-}
+    $_SESSION['pratos'] = array_values($_SESSION['pratos']);
+};
 ?>
 
 <!DOCTYPE html>
@@ -93,7 +119,8 @@ if (isset($_GET['excluir'])) {
         form input,
         form textarea,
         form select,
-        form button {
+        form button,
+        form input[type="file"] {
             width: 100%;
             padding: 12px;
             margin-bottom: 15px;
@@ -128,7 +155,8 @@ if (isset($_GET['excluir'])) {
 
         form input[type="text"]:focus,
         form textarea:focus,
-        form select:focus {
+        form select:focus,
+        form input[type="file"]:focus {
             border-color: rgb(154, 59, 59);
         }
 
@@ -172,12 +200,40 @@ if (isset($_GET['excluir'])) {
         .voltar i {
             margin-right: 8px;
         }
-        .segundo{
+
+        .segundo {
             padding: 7px;
-            
         }
-        .segundo a{
+
+        .segundo a {
             color: rgb(154, 59, 59, 0.8);
+            padding-inline: 7px;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            background-color: rgb(226, 199, 153);
+            border: 1px solid rgb(192, 130, 97);
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        input[type="file"]:hover {
+            border-color: rgb(154, 59, 59);
+        }
+
+        input[type="file"]::-webkit-file-upload-button {
+            background-color: rgb(154, 59, 59);
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        input[type="file"]::-webkit-file-upload-button:hover {
+            background-color: rgb(192, 130, 97);
         }
     </style>
     <script>
@@ -197,31 +253,36 @@ if (isset($_GET['excluir'])) {
             <h1>Administração de Cardápio</h1>
             <nav class="segundo">
                 <a href="index.php">Adicionar Prato</a>
-                <a href="index.php">Visualizar Cardápio</a>
+                <a href="projetoIntegrador.php">Visualizar Cardápio</a>
             </nav>
         </header>
 
-        <!-- Formulário de Adição de Prato -->
-        <section class="formulario">
+        <!-- formulario de adicao de prato -->
+        <section class="formulario" enctype="multipart/form-data">
             <h2>Adicionar Novo Prato</h2>
-            <form action="index.php" method="POST">
+            <form action="adm.php" method="POST">
                 <label for="nome">Nome do Prato:</label>
                 <input type="text" id="nome" name="nome" required>
 
                 <label for="resumo">Resumo do Prato:</label>
-                <textarea id="resumo" name="resumo"required></textarea>
+                <textarea id="resumo" name="resumo" required></textarea>
 
                 <label for="ingredientes">Ingredientes:</label>
-                <textarea id="ingredientes" name="ingredientes"required></textarea>
+                <textarea id="ingredientes" name="ingredientes" required></textarea>
 
                 <label for="preco">Preço:</label>
                 <input type="text" id="preco" name="preco" value="R$ " required oninput="formatarPreco(this)">
+
+                <label for="arquivo">Selecione um arquivo:</label>
+                <input type="file" name="arquivo" required placeholder="00,00">
 
                 <label for="categoria">Categoria:</label>
                 <select name="categoria" id="categoria">
                     <option value="entrada">Entrada</option>
                     <option value="pratoPrincipal">Prato Principal</option>
-                    <option value="bebida">Bebida</option>
+                    <option value="acompanhamento">Acompanhamento</option>
+                    <option value="bebidas">Bebida</option>
+                    <option value="drinks">Drinks</option>
                 </select>
 
                 <button type="submit" name="adicionar">Adicionar Prato</button>
@@ -229,7 +290,7 @@ if (isset($_GET['excluir'])) {
 
         </section>
 
-        <!-- Lista de Pratos Existentes -->
+        <!-- lista de pratos adcionados -->
         <section class="lista-pratos">
             <h2>Pratos Cadastrados</h2>
             <?php if (count($_SESSION['pratos']) > 0): ?>
@@ -239,7 +300,7 @@ if (isset($_GET['excluir'])) {
                             <strong><?= $prato['nome'] ?></strong> - <?= $prato['categoria'] ?><br>
                             <small><?= $prato['resumo'] ?></small><br>
                             <strong>Preço: R$ <?= number_format($prato['preco'], 2, ',', '.') ?></strong>
-                            <a href="index.php?excluir=<?= $index ?>" class="excluir">Excluir</a>
+                            <a href="adm.php?excluir=<?= $index ?>" class="excluir">Excluir</a>
                         </li>
                     <?php endforeach; ?>
                 </ul>
