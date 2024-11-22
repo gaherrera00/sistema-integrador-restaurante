@@ -43,6 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar'])) {
         'imagem' => $nomearquivo
     ];
 
+
     if ($categoria == 'entrada') {
         array_push($_SESSION['entrada'], $novoPrato);
     } else if ($categoria == 'pratoPrincipal') {
@@ -54,8 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar'])) {
     } else {
         array_push($_SESSION['drinks'], $novoPrato);
     }
-
-
 }
 
 // Excluir prato
@@ -242,11 +241,12 @@ if (isset($_GET['excluir'])) {
         }
 
         .caixinha {
+            display: flex;
             position: fixed;
             top: 20px;
             left: 20px;
-            width: 150px;
-            height: 100px;
+            width: 175px;
+            height: 75px;
             background-color: rgb(154, 59, 59);
             color: white;
             padding: 10px;
@@ -258,15 +258,12 @@ if (isset($_GET['excluir'])) {
             font-size: 14px;
         }
 
-        /* Estilo do botão de Logout */
-        .logout-btn {
-            width: 100%;
-            /* Botão ocupa toda a largura da caixinha */
-            padding: 8px;
+        .caxinha-btn {
+            width: 80%;
+            padding: 2px;
+            margin: 4px;
             background-color: #fff;
-            /* Fundo branco para o botão */
             color: rgb(154, 59, 59);
-            /* Cor do texto do botão */
             border: none;
             border-radius: 6px;
             font-size: 14px;
@@ -274,11 +271,17 @@ if (isset($_GET['excluir'])) {
             transition: background-color 0.3s ease;
         }
 
-        .logout-btn:hover {
+        .caxinha-btn:hover {
             background-color: rgb(192, 130, 97);
-            /* Cor de fundo quando o mouse passa em cima */
             color: white;
-            /* Cor do texto fica branca quando o botão é hover */
+        }
+
+        .caixaBotao {
+            margin-left: 20px;
+        }
+
+        .caixaImagem {
+            margin-left: 4px;
         }
     </style>
     <script>
@@ -320,7 +323,7 @@ if (isset($_GET['excluir'])) {
                     oninput="formatarPreco(this)">
 
                 <label for="imagem">Selecione um arquivo:</label>
-                <input type="file" name="imagem" required>
+                <input id="imagem" type="file" name="imagem" required>
 
                 <label for="categoria">Categoria:</label>
                 <select name="categoria" id="categoria">
@@ -355,8 +358,11 @@ if (isset($_GET['excluir'])) {
             <?php endif; ?>
         </section>
         <div class="caixinha">
-        <i class="fa-solid fa-user"></i>
-        <button class="logout-btn" onclick=<?php session_start();session_destroy();?>>Logout</button>
+            <div class="caixaImagem"> <i class="fa-solid fa-user"></i></div>
+            <div class="caixaBotao">
+                <button class="caxinha-btn" onclick=<?php session_destroy(); ?>>Logout</button>
+                <button class='caxinha-btn' href="adm.php">Administração</button>
+            </div>
         </div>
     </div>
 </body>

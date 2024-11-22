@@ -236,7 +236,6 @@ $drinks = [
         'ingredientes' => 'Conhaque, Chartreuse (licor herbal), suco de limão.'
     ]
 ];
-//verificacoes de envio
 session_start();
 
 
