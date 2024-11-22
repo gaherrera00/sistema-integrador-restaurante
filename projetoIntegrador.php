@@ -218,6 +218,7 @@ require_once 'cardapio.php';
         </div>
 
     </footer>
+    
 </body>
 
 </html>
