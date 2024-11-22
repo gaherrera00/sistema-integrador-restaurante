@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- inicio do style -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(242, 236, 190);
+            color: rgb(154, 59, 59);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: rgb(226, 199, 153);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            color: rgb(154, 59, 59);
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            color: rgb(154, 59, 59);
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 93.5%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid rgb(192, 130, 97);
+            border-radius: 6px;
+            background-color: #fff;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: rgb(154, 59, 59);
+        }
+
+        input[type="submit"] {
+            background-color: rgb(154, 59, 59);
+            color: #fff;
+            border: none;
+            padding: 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: rgb(192, 130, 97);
+        }
+
+        .criarConta {
+            font-size: 14.5px;
+            text-align: center;
+            margin: 20px 0 15px;
+            color: rgb(154, 59, 59);
+        }
+
+        .criarConta p a {
+            color: rgb(154, 59, 59);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .criarConta p a:hover {
+            text-decoration: underline;
+        }
+        .voltar{
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: transparent;
+            color: rgb(154, 59, 59);
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .voltar:hover {
+            text-decoration: underline;
+        }
+
+        .voltar i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="projetoIntegrador.php"><button class="voltar"><i class="fa-solid fa-angle-left"></i>Voltar</button></a>
+    <div class="container">
+        <h1>Login</h1>
+        <form action="formulario.php" method="POST">
+            <label for="text">Usuário:</label>
+            <input type="text" name="user" required>
+
+            <label for="senha">Senha:</label>
+            <input type="password" name="senha" required>
+
+            <div class="form-group">
+                <input type="submit" value="Entrar">
+            </div>
+
+            <div class="criarConta">
+                <p>Ainda não tem uma conta? <a href="./registrar.html">Registrar-se</a></p>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>
