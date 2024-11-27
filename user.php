@@ -1,7 +1,7 @@
 <!-- pagina de avaliacao para o usuario -->
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Coleta os dados do formulário
+    // coleta os dados do formulario
     $nome = isset($_POST['nome']) ? $_POST['nome'] : '';
     $mensagem = isset($_POST['mensagem']) ? $_POST['mensagem'] : '';
     $avaliacao = isset($_POST['avaliacao']) ? $_POST['avaliacao'] : '';
@@ -15,12 +15,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             fwrite($file, $avaliacaoFormatada);
             fclose($file);
             echo "<script>alert('Agradecemos pela sua avaliação!'); window.location.href = 'projetoIntegrador.php';</script>";
-        } else {
-            echo "Houve um erro ao salvar sua avaliação. Tente novamente mais tarde.";
-        }
-    } else {
-        echo "Por favor, preencha todos os campos do formulário.";
-    }
 }
 ?>
 <!DOCTYPE html>
