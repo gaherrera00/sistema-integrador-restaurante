@@ -4,14 +4,14 @@ session_start();
 $senha = $_POST['senha'];
 $usuario = $_POST['user'];
 // pagina de administracao
-if($usuario == "ADM" && $senha == "123"){
+if ($usuario == "ADM" && $senha == "123") {
     $_SESSION['loggedin'] = 'ADM';
     header('Location: adm.php');
 }
 // pagina de avaliacao para o cliente
-else{
+else {
     $_SESSION['loggedin'] = 'USER';
-    header('Location: user.html');
+    header('Location: user.php');
 
 }
 ?>

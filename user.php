@@ -1,4 +1,28 @@
 <!-- pagina de avaliacao para o usuario -->
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Coleta os dados do formulário
+    $nome = isset($_POST['nome']) ? $_POST['nome'] : '';
+    $mensagem = isset($_POST['mensagem']) ? $_POST['mensagem'] : '';
+    $avaliacao = isset($_POST['avaliacao']) ? $_POST['avaliacao'] : '';
+
+    // gravacao das avaliacoes em um arquivo txt
+    if (!empty($nome) && !empty($mensagem) && !empty($avaliacao)) {
+        $avaliacaoFormatada = "Nome: $nome\nMensagem: $mensagem\nAvaliação: $avaliacao estrelas\n\n";
+        $arquivo = "historico_de_avaliacoes.txt";
+        $file = fopen($arquivo, "a");
+        if ($file) {
+            fwrite($file, $avaliacaoFormatada);
+            fclose($file);
+            echo "<script>alert('Agradecemos pela sua avaliação!'); window.location.href = 'projetoIntegrador.php';</script>";
+        } else {
+            echo "Houve um erro ao salvar sua avaliação. Tente novamente mais tarde.";
+        }
+    } else {
+        echo "Por favor, preencha todos os campos do formulário.";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -9,7 +33,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- inicio do style -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -131,11 +154,10 @@
         }
     </style>
     <script>
-        // selecao das estrelas de avaliacao
+        // Função para selecionar estrelas de avaliação
         function avaliar(valor) {
             const estrelas = document.querySelectorAll('.avaliacao-estrelas .estrela');
             let delay = 0;
-
             estrelas.forEach((estrela, index) => {
                 setTimeout(() => {
                     if (parseInt(estrela.getAttribute('data-valor')) <= valor) {
@@ -147,6 +169,7 @@
                 }, delay);
                 delay += 100;
             });
+            document.getElementById("avaliacaoInput").value = valor;
         }
     </script>
 </head>
@@ -156,7 +179,8 @@
 
     <div class="container">
         <h2>Pesquisa de Satisfação</h2>
-        <form>
+        <!-- formulariode avaliacao -->
+        <form action="" method="POST">
             <div class="form-group">
                 <label for="nome">Nome Completo:</label>
                 <input type="text" id="nome" name="nome" required>
@@ -175,7 +199,8 @@
                     <span class="estrela" data-valor="5" onclick="avaliar(5)">&#9733;</span>
                 </div>
             </div>
-            <input onclick="alert('Agradeçemos pela sua avaliação!')" type="submit" value="Enviar">
+            <input type="hidden" id="avaliacaoInput" name="avaliacao">
+            <input type="submit" value="Enviar">
         </form>
     </div>
 </body>

@@ -322,7 +322,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar'])) {
             </form>
 
         </section>
-        
+
         <!-- caixa para facilitar a naevagacao -->
         <div class="caixinha">
             <div class="caixaImagem"> <i class="fa-solid fa-user"></i></div>

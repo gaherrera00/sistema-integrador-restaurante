@@ -202,7 +202,7 @@ require_once 'cardapio.php';
 </header>
 
 <body>
-<?php
+    <?php
     if (isset($_SESSION) && isset($_SESSION['loggedin']) == 'ADM') {
         echo '<div class="caixinha">
             <div class="caixaImagem"> <i class="fa-solid fa-user"></i></div>
@@ -223,7 +223,7 @@ require_once 'cardapio.php';
             <li><a href="#drink">Drinks</a></li>
         </ul>
     </nav>
-    
+
     <h1 class="primeiro"><a name="entrada"></a>Entradas</h1>
     <div class="container">
         <?php
