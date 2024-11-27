@@ -1,3 +1,4 @@
+<!-- pagina com os arrays do cardapio -->
 <?php
 $entrada = [
     [
@@ -236,6 +237,7 @@ $drinks = [
         'ingredientes' => 'Conhaque, Chartreuse (licor herbal), suco de limão.'
     ]
 ];
+// inciacao de todas sessoes
 session_start();
 
 if (!isset($_SESSION['entrada'])) {
@@ -251,7 +253,7 @@ if (!isset($_SESSION['entrada'])) {
     $bebidas = $_SESSION['bebidas'];
     $drinks = $_SESSION['drinks'];
 }
-
+// recebimento das informacoes do novo prato
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['titulo']) && isset($_POST['resumo']) && isset($_POST['ingredientes'])) {
     $nome = $_POST['titulo'];
     $resumo = $_POST['resumo'];

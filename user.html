@@ -1,3 +1,4 @@
+<!-- pagina de avaliacao para o usuario -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -130,6 +131,7 @@
         }
     </style>
     <script>
+        // selecao das estrelas de avaliacao
         function avaliar(valor) {
             const estrelas = document.querySelectorAll('.avaliacao-estrelas .estrela');
             let delay = 0;
@@ -141,6 +143,7 @@
                     } else {
                         estrela.classList.remove('selecionada');
                     }
+                    // leve atraso para completar as estrelas
                 }, delay);
                 delay += 100;
             });

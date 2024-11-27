@@ -1,3 +1,4 @@
+<!-- pagina de administracao do cardapio -->
 <?php
 session_start();
 
@@ -24,7 +25,7 @@ if (!isset($_SESSION['drinks'])) {
 // Adicionar prato
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar'])) {
 
-    // recebendo os dados do formulario
+    // recebe os dados do formulario
     $nome = $_POST['nome'];
     $resumo = $_POST['resumo'];
     $ingredientes = $_POST['ingredientes'];
@@ -274,6 +275,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar'])) {
         }
     </style>
     <script>
+        // funcao pra formatar o valor
         function formatarPreco(input) {
             let valor = input.value.replace('R$ ', '').replace(/\D/g, '');
             if (valor.length > 2) {
@@ -320,7 +322,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar'])) {
             </form>
 
         </section>
-
+        
+        <!-- caixa para facilitar a naevagacao -->
         <div class="caixinha">
             <div class="caixaImagem"> <i class="fa-solid fa-user"></i></div>
             <div class="caixaBotao">

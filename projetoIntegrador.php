@@ -1,3 +1,4 @@
+<!-- pagina do cardapio com todos itens -->
 <?php
 require_once 'cardapio.php';
 ?>
@@ -8,7 +9,7 @@ require_once 'cardapio.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cardapio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -102,6 +103,7 @@ require_once 'cardapio.php';
             width: 300px;
         }
 
+        /* outra nav bar pra navegar entre as categorias de prato */
         .ancora {
             position: fixed;
             top: 1%;
@@ -201,8 +203,6 @@ require_once 'cardapio.php';
 
 <body>
 <?php
-    // require_once 'formulario.php';  
-    // print $_SESSION['loggedin'];
     if (isset($_SESSION) && isset($_SESSION['loggedin']) == 'ADM') {
         echo '<div class="caixinha">
             <div class="caixaImagem"> <i class="fa-solid fa-user"></i></div>
@@ -211,7 +211,6 @@ require_once 'cardapio.php';
                 <a href="adm.php"><button class="caxinha-btn">Administração</button></a>
             </div>
           </div>';
-
     }
     ?>
     <!-- navegacao entre as categorias -->
