@@ -196,27 +196,24 @@ require_once 'cardapio.php';
     </script>
 </head>
 <header>
-    <?php
-    require_once 'formulario.php';
-    print $_SESSION['loggedin'];
-    if (isset($_SESSION) && $_SESSION['loggedin'] == 'ADM') {
+    <!-- navegacao -->
+</header>
+
+<body>
+<?php
+    // require_once 'formulario.php';  
+    // print $_SESSION['loggedin'];
+    if (isset($_SESSION) && isset($_SESSION['loggedin']) == 'ADM') {
         echo '<div class="caixinha">
             <div class="caixaImagem"> <i class="fa-solid fa-user"></i></div>
             <div class="caixaBotao">
-                <form method="POST">
-                    <button class="caxinha-btn" name="logout">Logout</button>
-                </form>
+                  <a href="logout.php"><button class="caxinha-btn">Logout</button></a>
                 <a href="adm.php"><button class="caxinha-btn">Administração</button></a>
             </div>
           </div>';
 
     }
     ?>
-    <!-- navegacao -->
-</header>
-
-<body>
-
     <!-- navegacao entre as categorias -->
     <nav class="ancora">
         <ul>
@@ -227,6 +224,7 @@ require_once 'cardapio.php';
             <li><a href="#drink">Drinks</a></li>
         </ul>
     </nav>
+    
     <h1 class="primeiro"><a name="entrada"></a>Entradas</h1>
     <div class="container">
         <?php

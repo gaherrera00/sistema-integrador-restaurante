@@ -324,9 +324,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar'])) {
         <div class="caixinha">
             <div class="caixaImagem"> <i class="fa-solid fa-user"></i></div>
             <div class="caixaBotao">
-                <button class="caxinha-btn" onclick=<?php session_unset();
-                session_destroy();
-                ?>>Logout</button>
+                <button class="caxinha-btn" href="logout.php">Logout</button>
                 <button class='caxinha-btn' href="adm.php">Administração</button>
             </div>
         </div>
