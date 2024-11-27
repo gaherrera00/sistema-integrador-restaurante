@@ -238,7 +238,6 @@ $drinks = [
 ];
 session_start();
 
-
 if (!isset($_SESSION['entrada'])) {
     $_SESSION['entrada'] = $entrada;
     $_SESSION['pratoPrincipal'] = $pratoPrincipal;

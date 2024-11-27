@@ -143,6 +143,50 @@ require_once 'cardapio.php';
             background-color: rgb(175, 60, 60);
             transform: scale(1.05);
         }
+
+        .caixinha {
+            display: flex;
+            position: fixed;
+            top: 80px;
+            left: 20px;
+            width: 175px;
+            height: 75px;
+            background-color: rgb(154, 59, 59);
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .caxinha-btn {
+            width: 80%;
+            padding: 2px;
+            margin: 4px;
+            background-color: #fff;
+            color: rgb(154, 59, 59);
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .caxinha-btn:hover {
+            background-color: rgb(192, 130, 97);
+            color: white;
+        }
+
+        .caixaBotao {
+            margin-left: 20px;
+        }
+
+        .caixaImagem {
+            margin-left: 4px;
+        }
     </style>
     <!-- inicio do js -->
     <script>
@@ -152,10 +196,27 @@ require_once 'cardapio.php';
     </script>
 </head>
 <header>
+    <?php
+    require_once 'formulario.php';
+    print $_SESSION['loggedin'];
+    if (isset($_SESSION) && $_SESSION['loggedin'] == 'ADM') {
+        echo '<div class="caixinha">
+            <div class="caixaImagem"> <i class="fa-solid fa-user"></i></div>
+            <div class="caixaBotao">
+                <form method="POST">
+                    <button class="caxinha-btn" name="logout">Logout</button>
+                </form>
+                <a href="adm.php"><button class="caxinha-btn">Administração</button></a>
+            </div>
+          </div>';
+
+    }
+    ?>
     <!-- navegacao -->
 </header>
 
 <body>
+
     <!-- navegacao entre as categorias -->
     <nav class="ancora">
         <ul>
@@ -291,9 +352,8 @@ require_once 'cardapio.php';
                 <i class="fa-brands fa-facebook" href="https://www.facebook.com/seufacebook" style="padding:7px;"></i>
             </div>
         </div>
-
     </footer>
-    
+
 </body>
 
 </html>

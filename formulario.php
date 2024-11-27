@@ -1,11 +1,15 @@
 <?php
+session_start();
 $senha = $_POST['senha'];
 $usuario = $_POST['user'];
 
 if($usuario == "ADM" && $senha == "123"){
-    include 'adm.php';
+    $_SESSION['loggedin'] = 'ADM';
+    header('Location: adm.php');
 }
 else{
-    include 'user.html';
+    $_SESSION['loggedin'] = '';
+    header('Location: user.html');
+
 }
 ?>

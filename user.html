@@ -107,7 +107,7 @@
             margin-bottom: 25px;
         }
 
-        .caixinha {
+        .caixa {
             text-align: center;
             background-color: rgba(192, 130, 97, 0.2);
             padding: 15px;
@@ -129,6 +129,23 @@
             color: gold;
         }
     </style>
+    <script>
+        function avaliar(valor) {
+            const estrelas = document.querySelectorAll('.avaliacao-estrelas .estrela');
+            let delay = 0;
+
+            estrelas.forEach((estrela, index) => {
+                setTimeout(() => {
+                    if (parseInt(estrela.getAttribute('data-valor')) <= valor) {
+                        estrela.classList.add('selecionada');
+                    } else {
+                        estrela.classList.remove('selecionada');
+                    }
+                }, delay);
+                delay += 100;
+            });
+        }
+    </script>
 </head>
 
 <body>
@@ -145,7 +162,7 @@
                 <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
             </div>
 
-            <div class="caixinha">
+            <div class="caixa">
                 <label for="avaliacao">Avaliação:</label>
                 <div class="avaliacao-estrelas" id="avaliacao">
                     <span class="estrela" data-valor="1" onclick="avaliar(1)">&#9733;</span>
