@@ -15,6 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             fwrite($file, $avaliacaoFormatada);
             fclose($file);
             echo "<script>alert('Agradecemos pela sua avaliação!'); window.location.href = 'projetoIntegrador.php';</script>";
+        }
+}
 }
 ?>
 <!DOCTYPE html>
