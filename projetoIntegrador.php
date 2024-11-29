@@ -13,8 +13,10 @@ require_once 'cardapio.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+       
     <!-- comeco do style -->
     <style>
+         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
         body {
             background-color: rgb(242, 236, 190);
             margin: 0;
@@ -42,6 +44,7 @@ require_once 'cardapio.php';
         }
 
         h3 {
+            font-family:Garamond;
             color: rgb(154, 59, 59);
             text-align: center;
             font-size: 30px;

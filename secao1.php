@@ -18,7 +18,7 @@ require_once 'cardapio.php';
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 
         body {
-            background-color: whitesmoke;
+            background-color: rgb(242, 236, 190);
             margin: 0;
         }
 
@@ -122,13 +122,12 @@ require_once 'cardapio.php';
 
         .ancora {
             position: relative;
-            
             transition: top 0.3s;
             width: 675px;
             height: 55px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: whitesmoke;
+            background-color: rgb(242, 236, 190);
             padding: 10px 30px;
             border-radius: 30px;
             display: flex;
@@ -141,7 +140,6 @@ require_once 'cardapio.php';
             position: fixed;
             top: 0;
             z-index: 1000;
-            width: 100%;
         }
 
         .ancora ul {
