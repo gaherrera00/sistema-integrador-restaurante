@@ -23,7 +23,7 @@ body {
     max-width: 1200px;
     display: flex;
     position: fixed;
-    background-color: white;
+    background-color: #F2ECBE;
     padding-left: 710px;
 }
 
@@ -33,7 +33,7 @@ body {
     align-items: center;
     margin-left: -250px;
     margin-top: 20px;
-    background-color: white;
+    background-color: #F2ECBE;
     width: 900px;
 }
 
