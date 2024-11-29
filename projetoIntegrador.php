@@ -1,3 +1,4 @@
+<!-- pagina do cardapio com todos itens -->
 <?php
 require_once 'cardapio.php';
 ?>
@@ -8,7 +9,7 @@ require_once 'cardapio.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cardapio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -102,6 +103,7 @@ require_once 'cardapio.php';
             width: 300px;
         }
 
+        /* outra nav bar pra navegar entre as categorias de prato */
         .ancora {
             position: fixed;
             top: 1%;
@@ -143,6 +145,50 @@ require_once 'cardapio.php';
             background-color: rgb(175, 60, 60);
             transform: scale(1.05);
         }
+
+        .caixinha {
+            display: flex;
+            position: fixed;
+            top: 80px;
+            left: 20px;
+            width: 175px;
+            height: 75px;
+            background-color: rgb(154, 59, 59);
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .caxinha-btn {
+            width: 80%;
+            padding: 2px;
+            margin: 4px;
+            background-color: #fff;
+            color: rgb(154, 59, 59);
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .caxinha-btn:hover {
+            background-color: rgb(192, 130, 97);
+            color: white;
+        }
+
+        .caixaBotao {
+            margin-left: 20px;
+        }
+
+        .caixaImagem {
+            margin-left: 4px;
+        }
     </style>
     <!-- inicio do js -->
     <script>
@@ -156,6 +202,17 @@ require_once 'cardapio.php';
 </header>
 
 <body>
+    <?php
+    if (isset($_SESSION) && isset($_SESSION['loggedin']) == 'ADM') {
+        echo '<div class="caixinha">
+            <div class="caixaImagem"> <i class="fa-solid fa-user"></i></div>
+            <div class="caixaBotao">
+                  <a href="logout.php"><button class="caxinha-btn">Logout</button></a>
+                <a href="adm.php"><button class="caxinha-btn">Administração</button></a>
+            </div>
+          </div>';
+    }
+    ?>
     <!-- navegacao entre as categorias -->
     <nav class="ancora">
         <ul>
@@ -166,6 +223,7 @@ require_once 'cardapio.php';
             <li><a href="#drink">Drinks</a></li>
         </ul>
     </nav>
+
     <h1 class="primeiro"><a name="entrada"></a>Entradas</h1>
     <div class="container">
         <?php
@@ -291,9 +349,8 @@ require_once 'cardapio.php';
                 <i class="fa-brands fa-facebook" href="https://www.facebook.com/seufacebook" style="padding:7px;"></i>
             </div>
         </div>
-
     </footer>
-    
+
 </body>
 
 </html>

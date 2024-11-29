@@ -1,8 +1,10 @@
+<!-- pagina de detalhes do prato -->
 <?php
 require_once 'cardapio.php';
 $codigo = $_GET['codigoprato'];
 $categoria = $_GET['categoria'];
 
+// verificando a categoria selecionada e enviando pro array correspondente
 if ($categoria == 'entrada') {
     $prato = $entrada[$codigo];
 } elseif ($categoria == 'principal') {
@@ -22,14 +24,14 @@ if ($categoria == 'entrada') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         <?php
-
-
         print $prato['nome'];
         ?>
     </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- inicio do style -->
     <style>
         .info {
             margin-left: 30px;
@@ -62,7 +64,7 @@ if ($categoria == 'entrada') {
             margin-top: 40px;
         }
 
-        .voltar{
+        .voltar {
             position: absolute;
             top: 20px;
             left: 20px;
@@ -89,20 +91,19 @@ if ($categoria == 'entrada') {
 </header>
 
 <body>
+    <!-- botao de voltar -->
     <a href="projetoIntegrador.php"><button class="voltar"><i class="fa-solid fa-angle-left"></i>Voltar</button></a>
+
+    <!-- card com detalhes do prato -->
     <div class="container">
         <div class="img">
             <img src="./imagem/<?php print $prato['imagem']; ?>">
         </div>
-
         <div class="info">
             <h1><?php print $prato['nome']; ?></h1>
             <b class="preco"><?php print $prato['preco']; ?></b>
             <p><?php print $prato['ingredientes']; ?></p>
         </div>
-
-
-
     </div>
 </body>
 

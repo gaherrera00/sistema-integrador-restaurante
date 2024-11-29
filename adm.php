@@ -1,22 +1,36 @@
+<!-- pagina de administracao do cardapio -->
 <?php
 session_start();
 
-// Se a sessão de pratos não existir, inicialize como um array vazio
-if (!isset($_SESSION['pratos'])) {
-    $_SESSION['pratos'] = [];
+if (!isset($_SESSION['entrada'])) {
+    $_SESSION['entrada'] = [];  // inicializa a sessao de entrada
 }
-// print_r($_POST);
+
+if (!isset($_SESSION['pratoPrincipal'])) {
+    $_SESSION['pratoPrincipal'] = [];  // inicializa a sessao de pratoPrincipal
+}
+
+if (!isset($_SESSION['acompanhamento'])) {
+    $_SESSION['acompanhamento'] = [];  // inicializa a sessao de acompanhamento
+}
+
+if (!isset($_SESSION['bebidas'])) {
+    $_SESSION['bebidas'] = [];  // inicializa a sessao de bebidas
+}
+
+if (!isset($_SESSION['drinks'])) {
+    $_SESSION['drinks'] = [];  // inicializa a sessao de drinks
+}
+
 // Adicionar prato
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar'])) {
+
+    // recebe os dados do formulario
     $nome = $_POST['nome'];
     $resumo = $_POST['resumo'];
     $ingredientes = $_POST['ingredientes'];
     $preco = $_POST['preco'];
     $categoria = $_POST['categoria'];
-    //$imagem = $_FILES['imagem'];
-    //formatar o formato de reais
-    $preco = str_replace('R$ ', '', $preco);
-    $preco = str_replace(',', '.', $preco); // Substitui vírgula por ponto para evitar erro no PHP
 
     $dir = "imagem/";
 
@@ -25,15 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar'])) {
     $caminho = $dir;
 
     $nomearquivo = basename($imagem);
-
-    // print 'imagem:'.$imagem;
-    if (move_uploaded_file($_FILES["imagem"]["tmp_name"], $imagem)) {
-
-        echo "O arquivo" . htmlspecialchars($nomearquivo) . "foi enviado com sucesso . (" . $caminho . ")";
-
-    } else {
-        echo "erro";
-    }
 
     $novoPrato = [
         'nome' => $nome,
@@ -56,13 +61,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar'])) {
         array_push($_SESSION['drinks'], $novoPrato);
     }
 }
-
-// Excluir prato
-if (isset($_GET['excluir'])) {
-    $index = $_GET['excluir'];
-    unset($_SESSION['pratos'][$index]);
-    $_SESSION['pratos'] = array_values($_SESSION['pratos']);
-}
 ;
 ?>
 
@@ -74,6 +72,7 @@ if (isset($_GET['excluir'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>Administração de Cardápio</title>
+
     <!-- incio do style -->
     <style>
         * {
@@ -205,15 +204,6 @@ if (isset($_GET['excluir'])) {
             margin-right: 8px;
         }
 
-        .segundo {
-            padding: 7px;
-        }
-
-        .segundo a {
-            color: rgb(154, 59, 59, 0.8);
-            padding-inline: 7px;
-        }
-
         input[type="file"] {
             padding: 10px;
             background-color: rgb(226, 199, 153);
@@ -243,7 +233,7 @@ if (isset($_GET['excluir'])) {
         .caixinha {
             display: flex;
             position: fixed;
-            top: 20px;
+            top: 80px;
             left: 20px;
             width: 175px;
             height: 75px;
@@ -285,6 +275,7 @@ if (isset($_GET['excluir'])) {
         }
     </style>
     <script>
+        // funcao pra formatar o valor
         function formatarPreco(input) {
             let valor = input.value.replace('R$ ', '').replace(/\D/g, '');
             if (valor.length > 2) {
@@ -296,15 +287,8 @@ if (isset($_GET['excluir'])) {
 </head>
 
 <body>
+    <a href="projetoIntegrador.php"><button class="voltar"><i class="fa-solid fa-angle-left"></i>Voltar</button></a>
     <div class="container">
-        <header>
-            <h1>Administração de Cardápio</h1>
-            <nav class="segundo">
-                <a href="index.php">Adicionar Prato</a>
-                <a href="projetoIntegrador.php">Visualizar Cardápio</a>
-            </nav>
-        </header>
-
         <!-- formulario de adicao de prato -->
         <section class="formulario">
             <h2>Adicionar Novo Prato</h2>
@@ -339,28 +323,11 @@ if (isset($_GET['excluir'])) {
 
         </section>
 
-        <!-- lista de pratos adcionados -->
-        <section class="lista-pratos">
-            <h2>Pratos Cadastrados</h2>
-            <?php if (count($_SESSION['pratos']) > 0): ?>
-                <ul>
-                    <?php foreach ($_SESSION['pratos'] as $index => $prato): ?>
-                        <li>
-                            <strong><?= $prato['nome'] ?></strong> - <?= $prato['categoria'] ?><br>
-                            <small><?= $prato['resumo'] ?></small><br>
-                            <strong>Preço: R$ <?= number_format($prato['preco'], 2, ',', '.') ?></strong>
-                            <a href="adm.php?excluir=<?= $index ?>" class="excluir">Excluir</a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            <?php else: ?>
-                <p>Não há pratos cadastrados.</p>
-            <?php endif; ?>
-        </section>
+        <!-- caixa para facilitar a naevagacao -->
         <div class="caixinha">
             <div class="caixaImagem"> <i class="fa-solid fa-user"></i></div>
             <div class="caixaBotao">
-                <button class="caxinha-btn" onclick=<?php session_destroy(); ?>>Logout</button>
+                <button class="caxinha-btn" href="logout.php">Logout</button>
                 <button class='caxinha-btn' href="adm.php">Administração</button>
             </div>
         </div>
