@@ -6,6 +6,8 @@
     width: 150px;
     height: 150px;
     margin-left: 100px;
+    position: relative;
+    
 }
 
 header {

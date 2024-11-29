@@ -67,6 +67,7 @@ require_once 'cardapio.php';
         footer {
             width: 100%;
             margin-top: 100px;
+            background-color: darkred;
         }
 
         .footertext {
@@ -139,7 +140,6 @@ require_once 'cardapio.php';
         .fixed {
             position: fixed;
             top: 0;
-            left: 0;
             z-index: 1000;
             width: 100%;
         }
@@ -170,30 +170,6 @@ require_once 'cardapio.php';
             transform: scale(1.05);
         }
     </style>
-    <!-- inicio do js -->
-    <script>
-        window.onload = function () {
-            window.scrollTo(100, 0);
-        };
-    </script>
-    <script>
-        // Obtém a referência à navbar
-        var ancora = document.getElementById("ancora");
-        // var sticky = ancora.offsetTop;
-        alert(ancora);
-        function stickyNavbar() {
-            if (window.pageYOffset > sticky) {
-                ancora.classList.add("fixed");
-                alert();
-            } else {
-                ancora.classList.remove("fixed");
-            }
-        }
-
-        // Adiciona ou remove a classe "fixed" conforme a rolagem
-        window.onscroll = function() { stickyNavbar() };
-
-    </script>
 </head>
 <header>
     <!-- navegacao -->
@@ -203,6 +179,7 @@ require_once 'cardapio.php';
     <!-- navegacao entre as categorias -->
     <h1 class="cardapio">Cardápio</h1>
     <hr class="solid"> <br><br><br>
+
     <div class="ancora" id="ancora">
         <ul>
             <li><a href="#entrada">Entradas</a></li>
@@ -212,10 +189,11 @@ require_once 'cardapio.php';
             <li><a href="#drink">Drinks</a></li>
         </ul>
     </div>
+
     <h1 class="primeiro"><a name="entrada"></a>Entradas</h1>
     <div class="container">
         <?php
-        //contador para percorrer o
+        //contador para percorrer o array
         $contador1 = 0;
 
         //foreach para montar o card  das entradas
@@ -340,6 +318,32 @@ require_once 'cardapio.php';
 
     </footer>
 
+        <!-- inicio do js -->
+        <script>
+        window.onload = function () {
+            window.scrollTo(100, 0);
+        };
+    </script>
+
+    <script>
+        // Obtém a referência à navbar
+        var ancora = document.getElementById('ancora');
+        var sticky = ancora.offsetTop;
+        // alert(ancora);
+
+        function stickyNavbar() {
+            if (window.pageYOffset > sticky) {
+                ancora.classList.add("fixed");
+                // alert();
+            } else {
+                ancora.classList.remove("fixed");
+            }
+        }
+
+        // Adiciona ou remove a classe "fixed" conforme a rolagem
+        window.onscroll = function() { stickyNavbar() };
+
+    </script>
 </body>
 
 </html>

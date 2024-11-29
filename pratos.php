@@ -92,7 +92,7 @@ if ($categoria == 'entrada') {
 
 <body>
     <!-- botao de voltar -->
-    <a href="projetoIntegrador.php"><button class="voltar"><i class="fa-solid fa-angle-left"></i>Voltar</button></a>
+    <a href="secao1.php"><button class="voltar"><i class="fa-solid fa-angle-left"></i>Voltar</button></a>
 
     <!-- card com detalhes do prato -->
     <div class="container">
