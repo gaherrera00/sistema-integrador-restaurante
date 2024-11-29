@@ -167,6 +167,50 @@ require_once 'cardapio.php';
             background-color: rgb(175, 60, 60);
             transform: scale(1.05);
         }
+
+        .caixinha {
+            display: flex;
+            position: fixed;
+            top: 80px;
+            left: 20px;
+            width: 175px;
+            height: 75px;
+            background-color: rgb(154, 59, 59);
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .caxinha-btn {
+            width: 80%;
+            padding: 2px;
+            margin: 4px;
+            background-color: #fff;
+            color: rgb(154, 59, 59);
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .caxinha-btn:hover {
+            background-color: rgb(192, 130, 97);
+            color: white;
+        }
+
+        .caixaBotao {
+            margin-left: 20px;
+        }
+
+        .caixaImagem {
+            margin-left: 4px;
+        }
     </style>
 </head>
 <header>
@@ -174,6 +218,18 @@ require_once 'cardapio.php';
 </header>
 
 <body>
+    <!-- botao dea administrador -->
+    <?php
+    if (isset($_SESSION) && isset($_SESSION['loggedin']) == 'ADM') {
+        echo '<div class="caixinha">
+            <div class="caixaImagem"> <i class="fa-solid fa-user"></i></div>
+            <div class="caixaBotao">
+                  <a href="logout.php"><button class="caxinha-btn">Logout</button></a>
+                <a href="adm.php"><button class="caxinha-btn">Administração</button></a>
+            </div>
+          </div>';
+    }
+    ?>
     <!-- navegacao entre as categorias -->
     <h1 class="cardapio">Cardápio</h1>
     <hr class="solid"> <br><br><br>
@@ -316,8 +372,8 @@ require_once 'cardapio.php';
 
     </footer>
 
-        <!-- inicio do js -->
-        <script>
+    <!-- inicio do js -->
+    <script>
         window.onload = function () {
             window.scrollTo(100, 0);
         };
@@ -339,7 +395,7 @@ require_once 'cardapio.php';
         }
 
         // Adiciona ou remove a classe "fixed" conforme a rolagem
-        window.onscroll = function() { stickyNavbar() };
+        window.onscroll = function () { stickyNavbar() };
 
     </script>
 </body>

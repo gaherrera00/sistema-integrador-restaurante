@@ -205,6 +205,7 @@ require_once 'cardapio.php';
 </header>
 
 <body>
+    <!-- botao dea administrador -->
     <?php
     if (isset($_SESSION) && isset($_SESSION['loggedin']) == 'ADM') {
         echo '<div class="caixinha">
