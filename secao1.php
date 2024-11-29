@@ -215,7 +215,7 @@ require_once 'cardapio.php';
     <h1 class="primeiro"><a name="entrada"></a>Entradas</h1>
     <div class="container">
         <?php
-        //contador para percorrer o array   
+        //contador para percorrer o
         $contador1 = 0;
 
         //foreach para montar o card  das entradas
