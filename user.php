@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($file) {
             fwrite($file, $avaliacaoFormatada);
             fclose($file);
-            echo "<script>alert('Agradecemos pela sua avaliação!'); window.location.href = 'projetoIntegrador.php';</script>";
+            echo "<script>alert('Agradecemos pela sua avaliação!'); window.location.href = 'secao1.php';</script>";
         }
 }
 }
@@ -171,7 +171,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <a href="projetoIntegrador.php"><button class="voltar"><i class="fa-solid fa-angle-left"></i>Voltar</button></a>
+    <a href="secao1.php"><button class="voltar"><i class="fa-solid fa-angle-left"></i>Voltar</button></a>
 
     <div class="container">
         <h2>Pesquisa de Satisfação</h2>

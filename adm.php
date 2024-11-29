@@ -287,7 +287,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar'])) {
 </head>
 
 <body>
-    <a href="projetoIntegrador.php"><button class="voltar"><i class="fa-solid fa-angle-left"></i>Voltar</button></a>
+    <a href="secao1.php"><button class="voltar"><i class="fa-solid fa-angle-left"></i>Voltar</button></a>
     <div class="container">
         <!-- formulario de adicao de prato -->
         <section class="formulario">
