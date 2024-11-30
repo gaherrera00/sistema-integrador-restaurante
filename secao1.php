@@ -244,6 +244,9 @@ require_once 'cardapio.php';
         </ul>
     </div>
 
+    <!--barra de pesquisa-->
+    
+
     <h1 class="primeiro"><a name="entrada"></a>Entradas</h1>
     <div class="container">
         <?php
