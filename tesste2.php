@@ -43,6 +43,6 @@ if (count($filteredItems) > 0) {
         ";
     }
 } else {
-    echo "<p>Nenhum resultado encontrado.</p>";
+    echo "<p>Nenhum resultado encontradao.</p>";
 }
 ?>
