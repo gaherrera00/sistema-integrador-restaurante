@@ -1,7 +1,7 @@
 <!-- pagina com os arrays do cardapio -->
 <?php
 $entrada = [
-    [   '   '
+    [   
         'nome' => 'Soupe à l\'Oignon',
         'preco' => 'R$ 68,00',
         'imagem' => 'entrada1.jfif',

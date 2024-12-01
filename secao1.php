@@ -211,6 +211,50 @@ require_once 'cardapio.php';
         .caixaImagem {
             margin-left: 4px;
         }
+
+        
+
+        .search {
+            width: 100%;
+            position: relative;
+            display: inline;
+        }
+
+        .searchTerm {
+            width: 100%;
+            border: 1px solid #ffff;
+            border-right: none;
+            padding: 5px;
+            height: 20px;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+            color: #ddd;
+        }
+
+        .searchTerm:focus {
+            color: #C76C53;
+        }
+
+        .searchButton {
+            width: 40px;
+            display: inline;
+            height: 36px;
+            border: 1px solid #C76C53;
+            text-align: center;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .wrap {
+            width: 30%;
+          
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
     </style>
 </head>
 <header>
@@ -228,6 +272,8 @@ require_once 'cardapio.php';
                 <a href="adm.php"><button class="caxinha-btn">Administração</button></a>
             </div>
           </div>';
+    } else {
+        echo '<br>';
     }
     ?>
     <!-- navegacao entre as categorias -->
@@ -244,8 +290,18 @@ require_once 'cardapio.php';
         </ul>
     </div>
 
-    <!--barra de pesquisa-->
-    
+    <!--barra de pesquisa - adicionei o wrap e o search, mudei o botão-->
+    <div class="wrap">
+        <div class="search">
+            <form id="searchForm" method="GET" action="">
+                <input type="text" class="searchTerm" name="query" placeholder="Pesquise por nome ou descrição..." />
+                <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+    <div class="results">
+        <?php include 'pesquisa.php'; ?>
+    </div>
 
     <h1 class="primeiro"><a name="entrada"></a>Entradas</h1>
     <div class="container">
