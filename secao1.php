@@ -241,10 +241,11 @@ require_once 'cardapio.php';
             height: 36px;
             border: 1px solid #C76C53;
             text-align: center;
-            color: #fff;
+            color: #C76C53;
             border-radius: 0 5px 5px 0;
             cursor: pointer;
             font-size: 20px;
+
         }
         
 
@@ -292,6 +293,7 @@ require_once 'cardapio.php';
     </div>
 
     <!--barra de pesquisa - adicionei o wrap e o search, mudei o botão-->
+    <br>
     <div class="wrap">
         <div class="search">
             <form id="searchForm" method="GET" action="">
