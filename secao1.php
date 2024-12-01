@@ -225,6 +225,7 @@ require_once 'cardapio.php';
             border: 1px solid #ffff;
             border-right: none;
             padding: 5px;
+            
             height: 20px;
             border-radius: 5px 0 0 5px;
             outline: none;
@@ -237,7 +238,6 @@ require_once 'cardapio.php';
 
         .searchButton {
             width: 40px;
-            display: inline;
             height: 36px;
             border: 1px solid #C76C53;
             text-align: center;
@@ -246,10 +246,11 @@ require_once 'cardapio.php';
             cursor: pointer;
             font-size: 20px;
         }
+        
 
         .wrap {
             width: 30%;
-          
+            display: flex;
             position: absolute;
             top: 50%;
             left: 50%;

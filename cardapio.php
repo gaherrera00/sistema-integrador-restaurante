@@ -7,6 +7,7 @@ $entrada = [
         'imagem' => 'entrada1.jfif',
         'resumo' => 'Sopa de cebola gratinada com queijo derretido, tradicionalmente servida com croûtons e queijo Gruyère.',
         'ingredientes' => 'Cebolas cozidas com manteiga e caldo de carne, farinha de trigo para engrossar, queijo Gruyère ralado e pão para croûtons.'
+       
     ],
     [
         'nome' => 'Escargots de Bourgogne',
@@ -21,6 +22,7 @@ $entrada = [
         'imagem' => 'entrada3.jfif',
         'resumo' => 'Fígado de pato ou ganso, cozido lentamente, servido com geleia de figo e fatias de pão torrado.',
         'ingredientes' => 'Foie gras cozido com manteiga, servido com geleia de figo e fatias de pão torrado.'
+        
     ],
     [
         'nome' => 'Quiche Lorraine',

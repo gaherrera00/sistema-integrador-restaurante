@@ -25,9 +25,11 @@ if ($query) {
     foreach ($filteredItems as $item) {
         echo "
         <div class='card'>
+        
         <img src='{$item['imagem']}' alt='{$item['nome']}'>
         <h3>{$item ['nome']}</h3>
         <p>{$item['resumo']}</p>
+        
         </div>
         ";
     }
