@@ -72,6 +72,14 @@ if (count($filteredItems) > 0) {
         ";
     }
 } else {
-    echo "<p>Nenhum resultado foi encontrado.</p>";
+    echo "<p class= 'noresult'>Nenhum resultado foi encontrado.</p>
+    <style>
+    .noresult {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px;
+}
+    </style>";
 }
 ?>
