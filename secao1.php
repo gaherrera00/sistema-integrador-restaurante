@@ -29,7 +29,7 @@ require_once 'cardapio.php';
         /* tag do primeiro titulo pra dar um espacamento diferente */
 
         .cardapio {
-            font-family: Cormorant Garamond;
+            font-family:  Garamond;
             font-size: 60px;
         }
 
