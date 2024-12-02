@@ -44,7 +44,7 @@ require_once 'cardapio.php';
         .primeiro {
             color: rgb(154, 59, 59);
             text-align: center;
-            font-size: 40px;
+            font-size: 50px;
             margin-bottom: 25px;
             margin-top: 100px;
         }
@@ -212,42 +212,51 @@ require_once 'cardapio.php';
             margin-left: 4px;
         }
 
-        
-
         .search {
             width: 100%;
             position: relative;
-            display: inline;
+            display: inline-block;
+            margin: 0 auto;
+            max-width: 600px;
         }
 
         .searchTerm {
             width: 100%;
-            border: 1px solid #ffff;
-            border-right: none;
-            padding: 5px;
-            
-            height: 20px;
-            border-radius: 5px 0 0 5px;
+            border: 1px solid rgb(154, 59, 59);
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 30px;
             outline: none;
-            color: #ddd;
+            color: rgb(154, 59, 59);
+            background-color: rgb(226, 199, 153);
+            box-sizing: border-box;
         }
 
         .searchTerm:focus {
-            color: #C76C53;
+            color: rgb(154, 59, 59);
+            background-color: rgb(242, 236, 190);
         }
 
         .searchButton {
-            width: 40px;
-            height: 36px;
-            border: 1px solid #C76C53;
+            width: 50px;
+            height: 40px;
+            border: 1px solid rgb(154, 59, 59);
             text-align: center;
-            color: #C76C53;
-            border-radius: 0 5px 5px 0;
+            color: white;
+            background-color: rgb(154, 59, 59);
+            border-radius: 0 30px 30px 0;
             cursor: pointer;
-            font-size: 20px;
-
+            font-size: 18px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
         }
-        
+
+        .searchButton:hover {
+            background-color: rgb(192, 130, 97);
+        }
 
         .wrap {
             width: 30%;
@@ -264,7 +273,7 @@ require_once 'cardapio.php';
 </header>
 
 <body>
-    <!-- botao dea administrador -->
+    <!-- botao de administrador -->
     <?php
     if (isset($_SESSION) && isset($_SESSION['loggedin']) == 'ADM') {
         echo '<div class="caixinha">
@@ -298,12 +307,12 @@ require_once 'cardapio.php';
         <div class="search">
             <form id="searchForm" method="GET" action="">
                 <input type="text" class="searchTerm" name="query" placeholder="Pesquise por nome ou descrição..." />
-                <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
+                <button type="submit" class="searchButton" ><i class="fa fa-search"></i></button>
             </form>
         </div>
     </div>
-    <div class="results">
-        <?php include 'pesquisa.php'; ?>
+    <div class="results" style="margin-top: 70px;">
+        <?php include 'pesquisa.php'; ?>    
     </div>
 
     <h1 class="primeiro"><a name="entrada"></a>Entradas</h1>
