@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
 * {
     margin: 0;
 }
@@ -7,7 +9,7 @@
     height: 150px;
     margin-left: 100px;
     position: relative;
-    
+
 }
 
 header {
@@ -23,7 +25,7 @@ body {
     max-width: 1200px;
     display: flex;
     position: fixed;
-    background-color: #F2ECBE;
+    background-color: white;
     padding-left: 710px;
 }
 
@@ -33,7 +35,7 @@ body {
     align-items: center;
     margin-left: -250px;
     margin-top: 20px;
-    background-color: #F2ECBE;
+    background-color: white;
     width: 900px;
 }
 
@@ -87,6 +89,37 @@ li a {
     align-items: center;
     text-align: center;
     flex-direction: column;
+}
+
+.secao1 {
+    height: 100vh;
+}
+
+.conteudo1 {
+    display: flex;
+    justify-content: baseline;
+    padding: 100px;
+    margin-left: 400px;
+    margin-right: 400px;
+
+
+
+
+}
+
+
+.gusteaus {
+    font-size: 40px;
+    font-family: Garamond;
+    font-weight: 100;
+}
+
+.divisor{
+    width: 100px; /* Largura do divisor */
+  height: 2px; /* Espessura do divisor */
+  background-color: #333; /* Cor do divisor */
+  border: none; /* Remove bordas padrão */
+  margin: 10px auto; /* Centraliza o divisor */
 }
 
 .secao2 {
