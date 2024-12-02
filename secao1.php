@@ -18,7 +18,7 @@ require_once 'cardapio.php';
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 
         body {
-            background-color: whitesmoke;
+            background-color: rgb(242, 236, 190);
             margin: 0;
         }
 
@@ -122,13 +122,12 @@ require_once 'cardapio.php';
 
         .ancora {
             position: relative;
-            
             transition: top 0.3s;
             width: 675px;
             height: 55px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: whitesmoke;
+            background-color: rgb(242, 236, 190);
             padding: 10px 30px;
             border-radius: 30px;
             display: flex;
@@ -141,7 +140,6 @@ require_once 'cardapio.php';
             position: fixed;
             top: 0;
             z-index: 1000;
-            width: 100%;
         }
 
         .ancora ul {
@@ -169,6 +167,96 @@ require_once 'cardapio.php';
             background-color: rgb(175, 60, 60);
             transform: scale(1.05);
         }
+
+        .caixinha {
+            display: flex;
+            position: fixed;
+            top: 80px;
+            left: 20px;
+            width: 175px;
+            height: 75px;
+            background-color: rgb(154, 59, 59);
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .caxinha-btn {
+            width: 80%;
+            padding: 2px;
+            margin: 4px;
+            background-color: #fff;
+            color: rgb(154, 59, 59);
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .caxinha-btn:hover {
+            background-color: rgb(192, 130, 97);
+            color: white;
+        }
+
+        .caixaBotao {
+            margin-left: 20px;
+        }
+
+        .caixaImagem {
+            margin-left: 4px;
+        }
+
+        
+
+        .search {
+            width: 100%;
+            position: relative;
+            display: inline;
+        }
+
+        .searchTerm {
+            width: 100%;
+            border: 1px solid #ffff;
+            border-right: none;
+            padding: 5px;
+            
+            height: 20px;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+            color: #ddd;
+        }
+
+        .searchTerm:focus {
+            color: #C76C53;
+        }
+
+        .searchButton {
+            width: 40px;
+            height: 36px;
+            border: 1px solid #C76C53;
+            text-align: center;
+            color: #C76C53;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 20px;
+
+        }
+        
+
+        .wrap {
+            width: 30%;
+            display: flex;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
     </style>
 </head>
 <header>
@@ -176,6 +264,20 @@ require_once 'cardapio.php';
 </header>
 
 <body>
+    <!-- botao dea administrador -->
+    <?php
+    if (isset($_SESSION) && isset($_SESSION['loggedin']) == 'ADM') {
+        echo '<div class="caixinha">
+            <div class="caixaImagem"> <i class="fa-solid fa-user"></i></div>
+            <div class="caixaBotao">
+                  <a href="logout.php"><button class="caxinha-btn">Logout</button></a>
+                <a href="adm.php"><button class="caxinha-btn">Administração</button></a>
+            </div>
+          </div>';
+    } else {
+        echo '<br>';
+    }
+    ?>
     <!-- navegacao entre as categorias -->
     <h1 class="cardapio">Cardápio</h1>
     <hr class="solid"> <br><br><br>
@@ -188,6 +290,20 @@ require_once 'cardapio.php';
             <li><a href="#bebida">Bebidas</a></li>
             <li><a href="#drink">Drinks</a></li>
         </ul>
+    </div>
+
+    <!--barra de pesquisa - adicionei o wrap e o search, mudei o botão-->
+    <br>
+    <div class="wrap">
+        <div class="search">
+            <form id="searchForm" method="GET" action="">
+                <input type="text" class="searchTerm" name="query" placeholder="Pesquise por nome ou descrição..." />
+                <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+    <div class="results">
+        <?php include 'pesquisa.php'; ?>
     </div>
 
     <h1 class="primeiro"><a name="entrada"></a>Entradas</h1>
@@ -318,8 +434,8 @@ require_once 'cardapio.php';
 
     </footer>
 
-        <!-- inicio do js -->
-        <script>
+    <!-- inicio do js -->
+    <script>
         window.onload = function () {
             window.scrollTo(100, 0);
         };
@@ -341,7 +457,7 @@ require_once 'cardapio.php';
         }
 
         // Adiciona ou remove a classe "fixed" conforme a rolagem
-        window.onscroll = function() { stickyNavbar() };
+        window.onscroll = function () { stickyNavbar() };
 
     </script>
 </body>

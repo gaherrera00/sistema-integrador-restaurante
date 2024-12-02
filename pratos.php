@@ -83,7 +83,7 @@ if ($categoria == 'entrada') {
 
         .voltar i {
             margin-right: 8px;
-        }
+        }   
     </style>
 </head>
 <header>
