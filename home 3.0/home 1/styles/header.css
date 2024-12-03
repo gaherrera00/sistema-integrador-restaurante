@@ -130,7 +130,7 @@ body {
     color: white; /**/
     box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease-out;
-    background-image: url(../img/GUSTEAUS\ \(1\).png);
+    background-image: url(../img/GUSTEAUS.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-size: 300px;
@@ -422,6 +422,7 @@ p {
   display: flex;
   gap: 15px;
   margin-top: 300px;
+  margin-left: 37px;
 }
 
 .social-icon {

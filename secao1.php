@@ -279,7 +279,7 @@ require_once 'cardapio.php';
     <!-- botao de administrador -->
     <?php
     // print_r($_SESSION);
-    if (isset($_SESSION) && $_SESSION['loggedin'] == 'ADM') {
+    if (isset($_SESSION) && isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 'ADM') {
         echo '<div class="caixinha">
             <div class="caixaImagem"> <i class="fa-solid fa-user"></i></div>
             <div class="caixaBotao">
