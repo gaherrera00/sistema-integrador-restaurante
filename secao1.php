@@ -270,6 +270,9 @@ require_once 'cardapio.php';
 </head>
 <header>
     <!-- navegacao -->
+     <?php
+     require_once 'nav.php';    
+     ?>
 </header>
 
 <body>
