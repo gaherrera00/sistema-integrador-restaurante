@@ -1,6 +1,6 @@
 <div class="nav">
     <div class="logo">
-        <img src="./img/GUSTEAU'S 2.png" alt="logo">
+        <img src="./img/GUSTEAUS2.png" alt="logo">
     </div>
     <ul class="register-link">
         <li>
