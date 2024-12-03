@@ -270,12 +270,16 @@ require_once 'cardapio.php';
 </head>
 <header>
     <!-- navegacao -->
+     <?php
+     require_once 'nav.php';    
+     ?>
 </header>
 
 <body>
     <!-- botao de administrador -->
     <?php
-    if (isset($_SESSION) && isset($_SESSION['loggedin']) == 'ADM') {
+    // print_r($_SESSION);
+    if (isset($_SESSION) && $_SESSION['loggedin'] == 'ADM') {
         echo '<div class="caixinha">
             <div class="caixaImagem"> <i class="fa-solid fa-user"></i></div>
             <div class="caixaBotao">
@@ -283,8 +287,6 @@ require_once 'cardapio.php';
                 <a href="adm.php"><button class="caxinha-btn">Administração</button></a>
             </div>
           </div>';
-    } else {
-        echo '<br>';
     }
     ?>
     <!-- navegacao entre as categorias -->
