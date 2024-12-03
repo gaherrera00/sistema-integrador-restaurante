@@ -25,8 +25,9 @@ body {
     max-width: 1200px;
     display: flex;
     position: fixed;
-    background-color: white;
+    background-color: #9A3B3B;
     padding-left: 710px;
+    
 }
 
 .register-link {
@@ -35,7 +36,7 @@ body {
     align-items: center;
     margin-left: -250px;
     margin-top: 20px;
-    background-color: white;
+    background-color:#9A3B3B;
     width: 900px;
 }
 
@@ -54,7 +55,7 @@ li a {
 }
 
 .register-link p a {
-    color: black;
+    color: white;
     text-decoration: none;
     font-weight: 600;
     position: relative;
@@ -92,38 +93,90 @@ li a {
 }
 
 .secao1 {
-    height: 100vh;
+    height: 170vh;
+    background-color: #F2ECBE;
+}
+
+.geral{
+    margin-left: 380px;
+    margin-right: 380px;
 }
 
 .conteudo1 {
     display: flex;
-    justify-content: baseline;
+    justify-content: space-between;
+    gap: 100px ;
     padding: 100px;
-    margin-left: 400px;
-    margin-right: 400px;
-
-
-
+    justify-content: center;
+    
+    
 
 }
 
+.coluna1{
+justify-content: right;
+}
 
-.gusteaus {
+.coluna1 p{
+    width: 350px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.coluna2 img{
+    width: 200px;
+    height: 200px;
+}
+.coluna2{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Duas colunas */
+    grid-gap: 10px; /* Espaçamento entre as imagens */ 
+}
+.sobrenos {
     font-size: 40px;
     font-family: Garamond;
     font-weight: 100;
+    color: #9A3B3B;
 }
 
 .divisor{
     width: 100px; /* Largura do divisor */
-  height: 2px; /* Espessura do divisor */
-  background-color: #333; /* Cor do divisor */
-  border: none; /* Remove bordas padrão */
-  margin: 10px auto; /* Centraliza o divisor */
+  height: 1.5px; /* Espessura do divisor */
+  background-color: #9A3B3B; /* Cor do divisor */
+  opacity: 0.5;
+   /* Remove bordas padrão */
+  margin: 1px; /* Centraliza o divisor */
+  margin-top: 15px;
+  vertical-align: baseline;
 }
 
+.paragrafo{
+    margin-top: 30px;   
+    width: 350px !important;
+    font-family: 'Times New Roman', Times, serif !important; 
+    opacity: 0.8;
+    
+}
+
+
+.paragrafo2{
+    margin-top: 30px;
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif !important; 
+    opacity: 0.8;
+}
+
+.conteudo2{
+    margin-left: 520px;
+    margin-right: 520px;
+}
+
+.conteudo2 img{
+    margin-top: 40px;
+}
+
+
 .secao2 {
-    height: 100vh;
+    height: 30vh;
     background: url('../img/img3.jpg') no-repeat center center fixed;
     background-size: cover;
     color: white;
@@ -132,4 +185,50 @@ li a {
     align-items: center;
     text-align: center;
     flex-direction: column;
+}
+
+.secao2 h1{
+    font-size: 30px;
+    font-family: garamond;
+    margin-left: 520px;
+    margin-right: 520px;
+}
+
+.secao3 {
+    height: 50vh;
+    background-color: #F2ECBE;
+}
+
+.conteudo3{
+    padding: 100px;
+    margin-left: 420px;
+    margin-right: 420px;
+    
+}
+
+.conteudo3 p{
+    margin-top: 30px;   
+    width: 350px !important;
+    font-family: 'Times New Roman', Times, serif !important; 
+    opacity: 0.8;
+}
+
+h3 {
+    color: rgb(154, 59, 59);
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+footer {
+    width: 100%;
+    margin-top: 100px;
+    background-color: darkred;
+}
+
+.footertext {
+    background-color: rgb(226, 199, 153);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
 }
